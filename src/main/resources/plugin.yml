@@ -2,5 +2,10 @@ name: CommunityDrivenTestPlugin
 version: 0.0.1
 main: pl.craftgames.communityplugin.cdtp.CDTP
 commands:
-  test:
-     description: test
+  drop:
+     description: Pokazuje drop
+  spawn:
+     description: Teleportuje na spawn
+  help:
+     description: Wyswietla pomoc
+     aliases: [pomoc, h]

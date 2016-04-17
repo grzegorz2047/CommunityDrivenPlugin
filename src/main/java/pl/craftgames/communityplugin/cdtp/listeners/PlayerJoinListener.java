@@ -18,7 +18,13 @@ public class PlayerJoinListener implements Listener {
         }
         Player p = e.getPlayer();
         if(!p.hasPlayedBefore()){
-            Kits.giveDefaultKit(p);
+            Kits.giveFirstPlayKit(p);
+            if(p.hasPermission("lobby.vip")){
+                Kits.giveVipKit(p);
+            }else{
+                Kits.giveDefaultKit(p);
+            }
+
         }
     }
 }
