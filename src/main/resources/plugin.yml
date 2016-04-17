@@ -1,0 +1,6 @@
+name: CommunityDrivenTestPlugin
+version: 0.0.1
+main: pl.craftgames.communityplugin.cdtp.CDTP
+commands:
+  test:
+     description: test
