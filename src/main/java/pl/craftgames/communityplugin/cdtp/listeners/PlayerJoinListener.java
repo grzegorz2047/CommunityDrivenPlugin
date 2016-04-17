@@ -13,13 +13,14 @@ public class PlayerJoinListener implements Listener {
 
     @EventHandler
     void onPlayerJoin(PlayerJoinEvent e){
+        e.setJoinMessage(null);
         if(e.getPlayer()== null){
             return;
         }
         Player p = e.getPlayer();
         if(!p.hasPlayedBefore()){
             Kits.giveFirstPlayKit(p);
-            if(p.hasPermission("lobby.vip")){
+            if(p.hasPermission("lobby.svip")){
                 Kits.giveVipKit(p);
             }else{
                 Kits.giveDefaultKit(p);

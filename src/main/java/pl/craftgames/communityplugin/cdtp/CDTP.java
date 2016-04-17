@@ -50,15 +50,15 @@ public class CDTP extends JavaPlugin implements CommandExecutor {
             }
             Player p = (Player) sender;
             p.sendMessage(ChatColor.GRAY + "Drop:");
-            p.sendMessage(ChatColor.GRAY + "Diament 1 %");
-            p.sendMessage(ChatColor.GRAY + "Złoto 0.7%");
-            p.sendMessage(ChatColor.GRAY + "Zelazo 2 %");
-            p.sendMessage(ChatColor.GRAY + "Wegiel 3%");
-            p.sendMessage(ChatColor.GRAY + "Szmaragdy 1.5%");
-            p.sendMessage(ChatColor.GRAY + "Proch: 1%");
-            p.sendMessage(ChatColor.GRAY + "Perły: 0.01%");
-            p.sendMessage(ChatColor.GRAY + "Redstone: 1%");
-            p.sendMessage(ChatColor.GRAY + "Ksiazka: 0.45%");
+            p.sendMessage(ChatColor.GRAY + "Diament " + ChatColor.DARK_AQUA + "1%");
+            p.sendMessage(ChatColor.GRAY + "Złoto " + ChatColor.DARK_AQUA + "0.7%");
+            p.sendMessage(ChatColor.GRAY + "Zelazo " + ChatColor.DARK_AQUA + "2 %");
+            p.sendMessage(ChatColor.GRAY + "Wegiel " + ChatColor.DARK_AQUA + "3%");
+            p.sendMessage(ChatColor.GRAY + "Szmaragdy " + ChatColor.DARK_AQUA + "1.5%");
+            p.sendMessage(ChatColor.GRAY + "Proch: " + ChatColor.DARK_AQUA + "1%");
+            p.sendMessage(ChatColor.GRAY + "Perły: " + ChatColor.DARK_AQUA + "0.01%");
+            p.sendMessage(ChatColor.GRAY + "Redstone: " + ChatColor.DARK_AQUA + "1%");
+            p.sendMessage(ChatColor.GRAY + "Ksiazka: " + ChatColor.DARK_AQUA + "0.45%");
             return true;
         }
         if (cmd.getName().equalsIgnoreCase("help")) {
@@ -82,12 +82,21 @@ public class CDTP extends JavaPlugin implements CommandExecutor {
             p.sendMessage(ChatColor.GRAY + "Przeteleportowano na spawn!");
             return true;
         }
+        if (cmd.getName().equalsIgnoreCase("vip")) {
+            if (!isPlayer(sender)) {
+                sender.sendMessage("Komenda tylko dla gracza");
+                return true;
+            }
+            Player p = (Player) sender;
+            p.sendMessage(ChatColor.GRAY + "Obecne przywileje rangi " + ChatColor.GOLD + "" + ChatColor.BOLD + "VIP:");
+            p.sendMessage(ChatColor.GRAY + "- Lepsze przedmioty startowe przy odrodzeniu");
+            return true;
+        }
         return true;
     }
 
     private boolean isPlayer(CommandSender sender) {
         if (!(sender instanceof Player)) {
-
             return false;
         }
         return true;

@@ -25,7 +25,8 @@ public class Kits {
                     new ItemStack(Material.DIAMOND_AXE, 1),
                     new ItemStack(Material.DIAMOND_SPADE, 1),
                     new ItemStack(Material.COOKED_BEEF, 64),
-                    new ItemStack(Material.BOOK, 8)
+                    new ItemStack(Material.BOOK, 8),
+                    new ItemStack(Material.COOKED_BEEF, 64)
                     );
         }
     }
@@ -38,22 +39,23 @@ public class Kits {
                     new ItemStack(Material.IRON_BOOTS, 1),
                     new ItemStack(Material.IRON_LEGGINGS, 1),
                     new ItemStack(Material.IRON_CHESTPLATE, 1),
-                    new ItemStack(Material.IRON_HELMET)
+                    new ItemStack(Material.IRON_HELMET),
+                    new ItemStack(Material.COOKED_BEEF, 64)
             );
         }
     }
 
     public static void giveFirstPlayKit(Player p) {
         PlayerInventory inv = p.getInventory();
-            if(p.hasPermission("lobby.vip")){
+            if(p.hasPermission("lobby.svip")){
                 inv.addItem(
-                        new ItemStack(Material.ENDER_CHEST, 2),
-                        new ItemStack(Material.COOKED_BEEF, 64)
+                        new ItemStack(Material.ENDER_CHEST, 2)
+
                 );
             }else{
                 inv.addItem(
-                        new ItemStack(Material.ENDER_CHEST, 1),
-                        new ItemStack(Material.COOKED_BEEF, 64)
+                        new ItemStack(Material.ENDER_CHEST, 1)
+
                 );
             }
 
