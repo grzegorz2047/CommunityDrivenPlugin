@@ -27,7 +27,7 @@ public class Kits {
                     new ItemStack(Material.COOKED_BEEF, 64),
                     new ItemStack(Material.BOOK, 8),
                     new ItemStack(Material.COOKED_BEEF, 64)
-                    );
+            );
         }
     }
 
@@ -47,17 +47,18 @@ public class Kits {
 
     public static void giveFirstPlayKit(Player p) {
         PlayerInventory inv = p.getInventory();
-            if(p.hasPermission("lobby.svip")){
-                inv.addItem(
-                        new ItemStack(Material.ENDER_CHEST, 2)
+        if (p.hasPermission("lobby.svip")) {
+            Kits.giveVipKit(p);
+            inv.addItem(
+                    new ItemStack(Material.ENDER_CHEST, 2)
+            );
+        } else {
+            Kits.giveDefaultKit(p);
+            inv.addItem(
+                    new ItemStack(Material.ENDER_CHEST, 1)
 
-                );
-            }else{
-                inv.addItem(
-                        new ItemStack(Material.ENDER_CHEST, 1)
-
-                );
-            }
+            );
+        }
 
 
     }

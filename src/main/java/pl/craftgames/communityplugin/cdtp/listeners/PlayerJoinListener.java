@@ -12,20 +12,14 @@ import pl.craftgames.communityplugin.cdtp.kits.Kits;
 public class PlayerJoinListener implements Listener {
 
     @EventHandler
-    void onPlayerJoin(PlayerJoinEvent e){
+    void onPlayerJoin(PlayerJoinEvent e) {
         e.setJoinMessage(null);
-        if(e.getPlayer()== null){
+        if (e.getPlayer() == null) {
             return;
         }
         Player p = e.getPlayer();
-        if(!p.hasPlayedBefore()){
+        if (!p.hasPlayedBefore()) {
             Kits.giveFirstPlayKit(p);
-            if(p.hasPermission("lobby.svip")){
-                Kits.giveVipKit(p);
-            }else{
-                Kits.giveDefaultKit(p);
-            }
-
         }
     }
 }

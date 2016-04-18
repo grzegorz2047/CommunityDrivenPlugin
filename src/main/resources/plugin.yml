@@ -2,10 +2,20 @@ name: CommunityDrivenTestPlugin
 version: 0.0.1
 main: pl.craftgames.communityplugin.cdtp.CDTP
 commands:
-  drop:
-     description: Pokazuje drop
-  spawn:
-     description: Teleportuje na spawn
-  help:
-     description: Wyswietla pomoc
-     aliases: [pomoc, h]
+    drop:
+        description: Podaje informacje o dropie
+    randomtp:
+        description: Wysyla gracza w losowe miejsce na mapie
+    admin:
+        description: admin command
+    vip:
+        description: vip info
+        aliases: [vip, extra, support, donator]
+    spawn:
+        description: teleportuje na spawno
+    pomoc:
+        description: Info nt. serwera
+        aliases: [help, pomoc, commands]
+    cobblex:
+        description: Cobblex
+        aliases: [cx, pandora]

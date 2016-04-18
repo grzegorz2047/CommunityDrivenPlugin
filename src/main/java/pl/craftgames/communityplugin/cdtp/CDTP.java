@@ -8,36 +8,54 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.craftgames.communityplugin.cdtp.commands.cobblex.CobbleXCommand;
+import pl.craftgames.communityplugin.cdtp.commands.drop.DropCommand;
+import pl.craftgames.communityplugin.cdtp.commands.help.HelpCommand;
+import pl.craftgames.communityplugin.cdtp.commands.spawn.SpawnCommand;
+import pl.craftgames.communityplugin.cdtp.commands.vip.VIPCommand;
 import pl.craftgames.communityplugin.cdtp.listeners.PlayerJoinListener;
+import pl.craftgames.communityplugin.cdtp.listeners.PlayerQuitListener;
 import pl.craftgames.communityplugin.cdtp.listeners.PlayerRespawnListener;
+import pl.craftgames.communityplugin.cdtp.tasks.TaskManager;
+import pl.craftgames.communityplugin.cdtp.teleport.TeleportManager;
 
 /**
  * Created by grzegorz2047 on 17.04.2016 for Nukkit server
  */
 public class CDTP extends JavaPlugin implements CommandExecutor {
 
+    private Settings settings = new Settings();
+    private TeleportManager teleportManager;
+    private TaskManager taskManager;
 
     @Override
     public void onDisable() {
+        this.taskManager.dispose();
         System.out.println(this.getName() + " zostal wlaczony!");
     }
 
     @Override
     public void onEnable() {
+        taskManager = new TaskManager(this);
+        teleportManager = new TeleportManager(this);
         registerListeners();
+        registerCommands();
         System.out.println(this.getName() + " zostal wylaczony!");
     }
 
     private void registerCommands() {
-        this.getCommand("spawn").setExecutor(this);
-        this.getCommand("drop").setExecutor(this);
-        this.getCommand("help").setExecutor(this);
+        this.getCommand("vip").setExecutor(new VIPCommand("vip", new String[]{"vip", "extra", "support", "donator"}, this));
+        this.getCommand("drop").setExecutor(new DropCommand("drop", this));
+        this.getCommand("spawn").setExecutor(new SpawnCommand("spawn", this));
+        this.getCommand("pomoc").setExecutor(new HelpCommand("pomoc", new String[]{"help", "pomoc", "commands"}, this));
+        this.getCommand("cobblex").setExecutor(new CobbleXCommand("cobblex", new String[]{"cobblex", "cx", "pandora"}, this));
 
     }
 
     private void registerListeners() {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerJoinListener(), this);
+        pm.registerEvents(new PlayerQuitListener(), this);
         pm.registerEvents(new PlayerRespawnListener(), this);
     }
 
@@ -49,16 +67,7 @@ public class CDTP extends JavaPlugin implements CommandExecutor {
                 return true;
             }
             Player p = (Player) sender;
-            p.sendMessage(ChatColor.GRAY + "Drop:");
-            p.sendMessage(ChatColor.GRAY + "Diament " + ChatColor.DARK_AQUA + "1%");
-            p.sendMessage(ChatColor.GRAY + "Złoto " + ChatColor.DARK_AQUA + "0.7%");
-            p.sendMessage(ChatColor.GRAY + "Zelazo " + ChatColor.DARK_AQUA + "2 %");
-            p.sendMessage(ChatColor.GRAY + "Wegiel " + ChatColor.DARK_AQUA + "3%");
-            p.sendMessage(ChatColor.GRAY + "Szmaragdy " + ChatColor.DARK_AQUA + "1.5%");
-            p.sendMessage(ChatColor.GRAY + "Proch: " + ChatColor.DARK_AQUA + "1%");
-            p.sendMessage(ChatColor.GRAY + "Perły: " + ChatColor.DARK_AQUA + "0.01%");
-            p.sendMessage(ChatColor.GRAY + "Redstone: " + ChatColor.DARK_AQUA + "1%");
-            p.sendMessage(ChatColor.GRAY + "Ksiazka: " + ChatColor.DARK_AQUA + "0.45%");
+
             return true;
         }
         if (cmd.getName().equalsIgnoreCase("help")) {
@@ -88,9 +97,7 @@ public class CDTP extends JavaPlugin implements CommandExecutor {
                 return true;
             }
             Player p = (Player) sender;
-            p.sendMessage(ChatColor.GRAY + "Obecne przywileje rangi " + ChatColor.GOLD + "" + ChatColor.BOLD + "VIP:");
-            p.sendMessage(ChatColor.GRAY + "- Lepsze przedmioty startowe przy odrodzeniu");
-            return true;
+        return true;
         }
         return true;
     }
@@ -100,5 +107,13 @@ public class CDTP extends JavaPlugin implements CommandExecutor {
             return false;
         }
         return true;
+    }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public TeleportManager getTeleportManager() {
+        return teleportManager;
     }
 }
