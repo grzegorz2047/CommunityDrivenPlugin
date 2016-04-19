@@ -6,8 +6,13 @@ package pl.craftgames.communityplugin.cdtp;
 public class Settings {
 
     private int teleportSpawnCooldown = 10;
+    private int protectedSpawnRadius = 30;
 
     public int getTeleportSpawnCooldown() {
         return teleportSpawnCooldown;
+    }
+
+    public int getProtectedSpawnRadius() {
+        return protectedSpawnRadius;
     }
 }

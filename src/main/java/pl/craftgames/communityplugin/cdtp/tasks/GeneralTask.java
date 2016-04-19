@@ -19,7 +19,7 @@ public class GeneralTask implements Runnable {
     @Override
     public void run() {
         plugin.getTeleportManager().checkRequests();
-        //plugin.getManager().getAntiLogoutManager().checkFights();
+        plugin.getAntiLogoutManager().checkFights();
 
         //if(seconds % 30 == 0){
         //    seconds = 1;
