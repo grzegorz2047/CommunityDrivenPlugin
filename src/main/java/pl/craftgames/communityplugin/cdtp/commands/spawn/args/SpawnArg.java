@@ -20,7 +20,7 @@ public class SpawnArg implements Arg {
     public void execute(CommandSender sender, String[] args) {
         Player p = (Player) sender;
         int time = 0;
-        if (!sender.hasPermission("CDTP.tp.spawn.delay")) { //Bukkit version will support this permissions probably xd
+        if (!sender.hasPermission("lobby.ekipa")) { //Bukkit version will support this permissions probably xd
             time = plugin.getSettings().getTeleportSpawnCooldown();
         }
             TeleportRequest request = new TeleportRequest

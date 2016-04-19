@@ -59,56 +59,6 @@ public class CDTP extends JavaPlugin implements CommandExecutor {
         pm.registerEvents(new PlayerRespawnListener(), this);
     }
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (cmd.getName().equalsIgnoreCase("drop")) {
-            if (!isPlayer(sender)) {
-                sender.sendMessage("Komenda tylko dla gracza");
-                return true;
-            }
-            Player p = (Player) sender;
-
-            return true;
-        }
-        if (cmd.getName().equalsIgnoreCase("help")) {
-            if (!isPlayer(sender)) {
-                sender.sendMessage("Komenda tylko dla gracza");
-                return true;
-            }
-            Player p = (Player) sender;
-            p.sendMessage(ChatColor.GRAY + "Dostepne komendy:");
-            p.sendMessage(ChatColor.GRAY + "/drop");
-            p.sendMessage(ChatColor.GRAY + "/spawn");
-            return true;
-        }
-        if (cmd.getName().equalsIgnoreCase("spawn")) {
-            if (!isPlayer(sender)) {
-                sender.sendMessage("Komenda tylko dla gracza");
-                return true;
-            }
-            Player p = (Player) sender;
-            p.teleport(p.getWorld().getSpawnLocation());
-            p.sendMessage(ChatColor.GRAY + "Przeteleportowano na spawn!");
-            return true;
-        }
-        if (cmd.getName().equalsIgnoreCase("vip")) {
-            if (!isPlayer(sender)) {
-                sender.sendMessage("Komenda tylko dla gracza");
-                return true;
-            }
-            Player p = (Player) sender;
-        return true;
-        }
-        return true;
-    }
-
-    private boolean isPlayer(CommandSender sender) {
-        if (!(sender instanceof Player)) {
-            return false;
-        }
-        return true;
-    }
-
     public Settings getSettings() {
         return settings;
     }
