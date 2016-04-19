@@ -65,14 +65,6 @@ public class CDTP extends JavaPlugin {
         pm.registerEvents(new EntityDamageEntityListener(this), this);
     }
 
-
-    private boolean isPlayer(CommandSender sender) {
-        if (!(sender instanceof Player)) {
-            return false;
-        }
-        return true;
-    }
-
     public Settings getSettings() {
         return settings;
     }
