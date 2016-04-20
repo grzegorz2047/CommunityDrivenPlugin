@@ -14,12 +14,13 @@ import pl.craftgames.communityplugin.cdtp.commands.drop.DropCommand;
 import pl.craftgames.communityplugin.cdtp.commands.help.HelpCommand;
 import pl.craftgames.communityplugin.cdtp.commands.spawn.SpawnCommand;
 import pl.craftgames.communityplugin.cdtp.commands.vip.VIPCommand;
-import pl.craftgames.communityplugin.cdtp.listeners.EntityDamageEntityListener;
-import pl.craftgames.communityplugin.cdtp.listeners.PlayerJoinListener;
-import pl.craftgames.communityplugin.cdtp.listeners.PlayerQuitListener;
-import pl.craftgames.communityplugin.cdtp.listeners.PlayerRespawnListener;
+import pl.craftgames.communityplugin.cdtp.database.SQLManager;
+import pl.craftgames.communityplugin.cdtp.listeners.*;
+import pl.craftgames.communityplugin.cdtp.scoreboard.SidebarData;
 import pl.craftgames.communityplugin.cdtp.tasks.TaskManager;
 import pl.craftgames.communityplugin.cdtp.teleport.TeleportManager;
+import pl.craftgames.communityplugin.cdtp.user.User;
+import pl.craftgames.communityplugin.cdtp.user.UserManager;
 
 /**
  * Created by grzegorz2047 on 17.04.2016 for Nukkit server
@@ -30,6 +31,9 @@ public class CDTP extends JavaPlugin {
     private TeleportManager teleportManager;
     private TaskManager taskManager;
     private AntiLogoutManager antiLogoutManager;
+    private SQLManager sqlManager;
+    private UserManager userManager;
+    private SidebarData sidebarData;
 
     @Override
     public void onDisable() {
@@ -41,9 +45,12 @@ public class CDTP extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        sidebarData = new SidebarData(this);
+        userManager = new UserManager();
         taskManager = new TaskManager(this);
         teleportManager = new TeleportManager(this);
         antiLogoutManager = new AntiLogoutManager(this);
+        this.sqlManager = new SQLManager(this, "", 3306, "", "", "");
         registerListeners();
         registerCommands();
         System.out.println(this.getName() + " zostal wylaczony!");
@@ -59,10 +66,11 @@ public class CDTP extends JavaPlugin {
 
     private void registerListeners() {
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new PlayerJoinListener(), this);
+        pm.registerEvents(new PlayerJoinListener(this), this);
         pm.registerEvents(new PlayerQuitListener(this), this);
-        pm.registerEvents(new PlayerRespawnListener(), this);
+        pm.registerEvents(new PlayerRespawnListener(this), this);
         pm.registerEvents(new EntityDamageEntityListener(this), this);
+        pm.registerEvents(new PlayerDeathListener(this), this);
     }
 
     public Settings getSettings() {
@@ -79,5 +87,17 @@ public class CDTP extends JavaPlugin {
 
     public Settings getSettingsManager() {
         return settings;
+    }
+
+    public SQLManager getSQLManager() {
+        return sqlManager;
+    }
+
+    public UserManager getUserManager() {
+        return userManager;
+    }
+
+    public SidebarData getSidebarData() {
+        return sidebarData;
     }
 }
