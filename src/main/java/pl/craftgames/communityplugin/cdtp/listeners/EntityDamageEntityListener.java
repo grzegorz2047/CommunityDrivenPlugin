@@ -149,7 +149,8 @@ public class EntityDamageEntityListener implements Listener {
         if (vf == null) {
             vf = new Fight(attacker.getName(), attacked.getName(), System.currentTimeMillis());
             plugin.getAntiLogoutManager().getFightList().put(attacked.getName(), vf);
-            attacked.sendMessage((ColoringUtil.colorText("Mozesz sie wylogowac za {TIME} sekund")).replace("{TIME}", String.valueOf(vf.getCooldown())));
+            attacked.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Jestes podczas WALKI!");
+            attacked.sendMessage((ColoringUtil.colorText(ChatColor.RED + "" + ChatColor.BOLD + "Mozesz sie wylogowac za {TIME} sekund")).replace("{TIME}", String.valueOf(vf.getCooldown())));
         } else {
             vf.setAttacker(attacker.getName());
             vf.setVictim(attacked.getName());
