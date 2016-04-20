@@ -22,3 +22,6 @@ commands:
     shop:
         description: Sklep
         aliases: [sklep, monopolowy]
+    top:
+        description: Topka
+        aliases: [topka, top10]

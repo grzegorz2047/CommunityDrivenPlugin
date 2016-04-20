@@ -17,7 +17,7 @@ public class PlayerJoinListener implements Listener {
 
     private final CDTP plugin;
 
-    public PlayerJoinListener(CDTP plugin){
+    public PlayerJoinListener(CDTP plugin) {
         this.plugin = plugin;
     }
 
@@ -28,6 +28,9 @@ public class PlayerJoinListener implements Listener {
             return;
         }
         Player p = e.getPlayer();
+        p.addAttachment(plugin, "essentials.sethome", true);
+        p.addAttachment(plugin, "essentials.delhome", true);
+        p.addAttachment(plugin, "essentials.home", true);
         plugin.getSQLManager().addPlayer(p);
         User user = plugin.getSQLManager().getPlayer(p);
         //System.out.print("User jest null");

@@ -26,6 +26,7 @@ public class GenHelpArg implements Arg {
         p.sendMessage(ColoringUtil.colorText("&a&l/drop - &r&7Pokazuje drop na serwerze! "));
         p.sendMessage(ColoringUtil.colorText("&a&l/vip &r&7Pokazuje mozliwosci dla rangi vip! "));
         p.sendMessage(ColoringUtil.colorText("&a&l/sklep &r&7Pokazuje przedmioty w sklepie! "));
+        p.sendMessage(ColoringUtil.colorText("&a&l/top &r&7Pokazuje 10 najlepszych graczy! "));
         //p.sendMessage(ColoringUtil.colorText("&a/cx &7Zamienia stacki cobblestone na losowy przedmiot"));
     }
 }

@@ -199,6 +199,26 @@ public class SQLManager {
         }
         return null;
     }
+
+    public void printTop10Players(Player p) {
+        try {
+            statement = this.connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM `" + sqlTablePrefix + "players` ORDER BY kills DESC LIMIT 10");
+            int index = 1;
+            p.sendMessage("§7§l========TOPKA========");
+            while (result.next()) {
+                String username = result.getString("username");
+                int kills = result.getInt("kills");
+                int deaths = result.getInt("deaths");
+                int money = result.getInt("money");
+                p.sendMessage("§7"+(index++) + ". Gracz §c§l" + username+"§7§l:");
+                p.sendMessage("§7zabojstwa: §c§l" + kills + "§7, smierci: §c§l" + deaths + "§7, monety: §c§l" + money);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
 
 

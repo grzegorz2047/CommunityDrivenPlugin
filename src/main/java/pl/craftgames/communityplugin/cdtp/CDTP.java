@@ -9,6 +9,7 @@ import pl.craftgames.communityplugin.cdtp.commands.drop.DropCommand;
 import pl.craftgames.communityplugin.cdtp.commands.help.HelpCommand;
 import pl.craftgames.communityplugin.cdtp.commands.shop.ShopCommand;
 import pl.craftgames.communityplugin.cdtp.commands.spawn.SpawnCommand;
+import pl.craftgames.communityplugin.cdtp.commands.top.TopCommand;
 import pl.craftgames.communityplugin.cdtp.commands.vip.VIPCommand;
 import pl.craftgames.communityplugin.cdtp.database.SQLManager;
 import pl.craftgames.communityplugin.cdtp.listeners.*;
@@ -57,6 +58,7 @@ public class CDTP extends JavaPlugin {
         this.getCommand("vip").setExecutor(new VIPCommand("vip", new String[]{"vip", "extra", "support", "donator"}, this));
         this.getCommand("drop").setExecutor(new DropCommand("drop", this));
         this.getCommand("spawn").setExecutor(new SpawnCommand("spawn", this));
+        this.getCommand("top").setExecutor(new TopCommand("top", this));
         this.getCommand("shop").setExecutor(new ShopCommand("shop", this));
         this.getCommand("pomoc").setExecutor(new HelpCommand("pomoc", new String[]{"help", "pomoc", "commands"}, this));
         this.getCommand("cobblex").setExecutor(new CobbleXCommand("cobblex", new String[]{"cobblex", "cx", "pandora"}, this));
