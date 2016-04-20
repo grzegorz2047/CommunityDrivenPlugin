@@ -125,7 +125,7 @@ public class SQLManager {
         try {
             statement = this.connection.createStatement();
             String query = "UPDATE `" + sqlTablePrefix + "players` SET `" + columns.toString().toLowerCase() + "` = " + columns.toString().toLowerCase() + " + " + value + " WHERE `username` = '" + playername + "'";
-            System.out.println("Aktualizuje "+query);
+            //System.out.println("Aktualizuje "+query);
             statement.executeUpdate(query);
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -191,7 +191,7 @@ public class SQLManager {
             int kills = result.getInt("kills");
             int deaths = result.getInt("deaths");
             int money = result.getInt("money");
-            System.out.println("Pobrane wartosci to "+kills+ " "+ deaths+" "+ money);
+            //System.out.println("Pobrane wartosci to "+kills+ " "+ deaths+" "+ money);
             return new User(username, kills, deaths, money);
 
         } catch (SQLException ex) {

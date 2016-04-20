@@ -19,3 +19,6 @@ commands:
     cobblex:
         description: Cobblex
         aliases: [cx, pandora]
+    shop:
+        description: Sklep
+        aliases: [sklep, monopolowy]

@@ -7,6 +7,8 @@ public class Settings {
 
     private int teleportSpawnCooldown = 10;
     private int protectedSpawnRadius = 30;
+    private int moneyForKill = 3;
+    //private int moneyForDeath = -1;
 
     public int getTeleportSpawnCooldown() {
         return teleportSpawnCooldown;
@@ -14,5 +16,9 @@ public class Settings {
 
     public int getProtectedSpawnRadius() {
         return protectedSpawnRadius;
+    }
+
+    public int getMoneyForKill() {
+        return moneyForKill;
     }
 }

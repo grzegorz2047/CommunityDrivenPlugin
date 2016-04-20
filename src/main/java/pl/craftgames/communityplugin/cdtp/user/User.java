@@ -1,5 +1,8 @@
 package pl.craftgames.communityplugin.cdtp.user;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
 /**
  * Created by grzegorz2047 on 20.04.2016
  */
@@ -40,5 +43,13 @@ public class User {
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Player getPlayer() {
+        return Bukkit.getPlayer(username);
     }
 }

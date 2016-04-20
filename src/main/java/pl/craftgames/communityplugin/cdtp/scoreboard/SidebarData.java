@@ -14,6 +14,7 @@ public class SidebarData {
     private final CDTP plugin;
     private String killLabel = "§7Zabojstwa:§c§l";
     private String deathLabel = "§7Smierci:§c§l";
+    private String moneyLabel = "§7Monety:§c§l";
 
     public SidebarData(CDTP plugin) {
         this.plugin = plugin;
@@ -24,8 +25,18 @@ public class SidebarData {
         Objective objective = scoreboard.registerNewObjective("sidebar", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         objective.setDisplayName("§6§lSerwer spolecznosci CG");
+
+        User user = plugin.getUserManager().getUsers().get(p.getName());
+
+
+
+
+        addEntry(scoreboard, objective, killLabel, user.getDeaths(), 5);
+        addEntry(scoreboard, objective, deathLabel, user.getKills(), 4);
+        addEntry(scoreboard, objective, moneyLabel, user.getMoney(), 3);
+
         Score info = objective.getScore("§7Twoja ranga:");
-        info.setScore(15);
+        info.setScore(2);
         Score rank;
         if (p.hasPermission("lobby.svip")) {
             rank = objective.getScore("§c§lEKIPA");
@@ -34,11 +45,9 @@ public class SidebarData {
         } else {
             rank = objective.getScore("§7§GRACZ");
         }
-        rank.setScore(14);
+        rank.setScore(1);
 
-        User user = plugin.getUserManager().getUsers().get(p.getName());
-        addEntry(scoreboard, objective, killLabel, user.getDeaths(), 13);
-        addEntry(scoreboard, objective, deathLabel, user.getKills(), 12);
+
         p.setScoreboard(scoreboard);
     }
 
@@ -47,6 +56,7 @@ public class SidebarData {
         Scoreboard scoreboard = p.getScoreboard();
         updateEntry(scoreboard, deathLabel, user.getDeaths());
         updateEntry(scoreboard, killLabel, user.getKills());
+        updateEntry(scoreboard, moneyLabel, user.getMoney());
         p.setScoreboard(scoreboard);
     }
 

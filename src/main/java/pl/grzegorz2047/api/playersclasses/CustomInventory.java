@@ -35,17 +35,35 @@ public class CustomInventory {
         return inventory;
     }
 
-    public void setBoots(ItemStack boots){
+    public void setBoots(ItemStack boots) {
         this.armorContents[0] = boots;
     }
 
-    public void setLeggings(ItemStack leggings){
+    public void setLeggings(ItemStack leggings) {
         this.armorContents[1] = leggings;
     }
-    public void setChestplate(ItemStack chestplate){
+
+    public void setChestplate(ItemStack chestplate) {
         this.armorContents[2] = chestplate;
     }
-    public void setHelmet(ItemStack helmet){
+
+    public void setHelmet(ItemStack helmet) {
         this.armorContents[3] = helmet;
+    }
+
+    public ItemStack getBoots( ) {
+        return this.armorContents[0];
+    }
+
+    public ItemStack getLeggings( ) {
+        return this.armorContents[1];
+    }
+
+    public ItemStack getChestplate( ) {
+        return this.armorContents[2];
+    }
+
+    public ItemStack getHelmet( ) {
+        return this.armorContents[3];
     }
 }

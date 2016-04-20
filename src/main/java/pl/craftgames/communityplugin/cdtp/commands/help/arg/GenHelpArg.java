@@ -22,9 +22,10 @@ public class GenHelpArg implements Arg {
     @Override
     public void execute(CommandSender sender, String[] args) {
         Player p = (Player) sender;
-        p.sendMessage(ColoringUtil.colorText("&7Dostepne komendy: "));
-        p.sendMessage(ColoringUtil.colorText("&a/drop - &7Pokazuje drop na serwerze "));
-        p.sendMessage(ColoringUtil.colorText("&a/vip &7Pokazuje mozliwosci dla rangi vip "));
+        p.sendMessage(ColoringUtil.colorText("&7&lDostepne komendy: "));
+        p.sendMessage(ColoringUtil.colorText("&a&l/drop - &r&7Pokazuje drop na serwerze! "));
+        p.sendMessage(ColoringUtil.colorText("&a&l/vip &r&7Pokazuje mozliwosci dla rangi vip! "));
+        p.sendMessage(ColoringUtil.colorText("&a&l/sklep &r&7Pokazuje przedmioty w sklepie! "));
         //p.sendMessage(ColoringUtil.colorText("&a/cx &7Zamienia stacki cobblestone na losowy przedmiot"));
     }
 }

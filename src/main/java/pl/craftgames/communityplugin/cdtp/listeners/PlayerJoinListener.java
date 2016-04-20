@@ -30,8 +30,7 @@ public class PlayerJoinListener implements Listener {
         Player p = e.getPlayer();
         plugin.getSQLManager().addPlayer(p);
         User user = plugin.getSQLManager().getPlayer(p);
-        if(user == null)
-        System.out.print("User jest null");
+        //System.out.print("User jest null");
         plugin.getUserManager().getUsers().put(p.getName(), user);
 
 

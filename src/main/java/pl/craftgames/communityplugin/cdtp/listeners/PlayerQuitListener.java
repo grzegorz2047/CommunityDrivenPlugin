@@ -32,7 +32,7 @@ public class PlayerQuitListener implements Listener {
             if (!f.getAttacker().equals(p.getName())) {
                 Player attacker = Bukkit.getPlayer(f.getAttacker());
                 if (attacker != null) {
-                    attacker.sendMessage(("Gracz {PLAYER} wylogowal sie podczas walki!").replace("{PLAYER}", p.getName()));
+                    attacker.sendMessage(("§7§c§lGracz {PLAYER} wylogowal sie podczas walki!").replace("{PLAYER}", p.getName()));
                 }
             }
         }

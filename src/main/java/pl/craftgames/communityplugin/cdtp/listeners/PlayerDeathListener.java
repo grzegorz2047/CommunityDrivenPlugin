@@ -1,9 +1,12 @@
 package pl.craftgames.communityplugin.cdtp.listeners;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import pl.craftgames.communityplugin.cdtp.CDTP;
+import pl.craftgames.communityplugin.cdtp.Settings;
 import pl.craftgames.communityplugin.cdtp.antilogout.Fight;
 import pl.craftgames.communityplugin.cdtp.database.PlayerColumns;
 import pl.craftgames.communityplugin.cdtp.user.User;
@@ -21,18 +24,22 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
-        if(e.getEntity()== null){
+        if (e.getEntity() == null) {
             return;
         }
         plugin.getSQLManager().incrementColumn(e.getEntity().getName(), PlayerColumns.DEATHS, 1);
         User user = plugin.getUserManager().getUsers().get(e.getEntity().getName());
         user.setDeaths(user.getDeaths() + 1);
         plugin.getSidebarData().refreshScoreboard(e.getEntity());
-        if (e.getEntity().getKiller() != null) {
+        Player killerPlayer = e.getEntity().getKiller();
+        if (killerPlayer != null) {
             plugin.getSQLManager().incrementColumn(e.getEntity().getKiller().getName(), PlayerColumns.KILLS, 1);
             User killer = plugin.getUserManager().getUsers().get(e.getEntity().getKiller().getName());
+            killer.setMoney(killer.getMoney() + plugin.getSettingsManager().getMoneyForKill());
+            killerPlayer.sendMessage("§6§l+" + plugin.getSettingsManager().getMoneyForKill() + " monet!");
             killer.setKills(killer.getKills() + 1);
             plugin.getSidebarData().refreshScoreboard(e.getEntity().getKiller());
+            Bukkit.broadcastMessage("§c§l" + killer.getUsername() + "§r§7 zabil " + "§c§l" + user.getUsername());
             Fight f = plugin.getAntiLogoutManager().getFightList().get(e.getEntity().getName());
             String attacker = f.getAttacker();
             String victim = f.getVictim();
