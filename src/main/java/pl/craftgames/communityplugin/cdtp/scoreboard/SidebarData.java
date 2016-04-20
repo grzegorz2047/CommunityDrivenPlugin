@@ -15,6 +15,7 @@ public class SidebarData {
     private String killLabel = "§7Zabojstwa:§c§l";
     private String deathLabel = "§7Smierci:§c§l";
     private String moneyLabel = "§7Monety:§c§l";
+    private String logoutLabel = "§c§lLogout:";
 
     public SidebarData(CDTP plugin) {
         this.plugin = plugin;
@@ -26,11 +27,16 @@ public class SidebarData {
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         objective.setDisplayName("§6§lSerwer spolecznosci CG");
 
+        Objective healthObj = scoreboard.registerNewObjective("showhealth", "health");
+        healthObj.setDisplaySlot(DisplaySlot.BELOW_NAME);
+        healthObj.setDisplayName(" §c§l❤");
+        p.setHealth(p.getHealth());
+
+
         User user = plugin.getUserManager().getUsers().get(p.getName());
 
 
-
-
+        addEntry(scoreboard, objective, logoutLabel, "tak", 6);
         addEntry(scoreboard, objective, killLabel, user.getDeaths(), 5);
         addEntry(scoreboard, objective, deathLabel, user.getKills(), 4);
         addEntry(scoreboard, objective, moneyLabel, user.getMoney(), 3);
@@ -43,7 +49,7 @@ public class SidebarData {
         } else if (p.hasPermission("lobby.svip")) {
             rank = objective.getScore("§6§lVIP");
         } else {
-            rank = objective.getScore("§7§GRACZ");
+            rank = objective.getScore("§7§lGRACZ");
         }
         rank.setScore(1);
 
@@ -54,10 +60,20 @@ public class SidebarData {
     public void refreshScoreboard(Player p) {
         User user = plugin.getUserManager().getUsers().get(p.getName());
         Scoreboard scoreboard = p.getScoreboard();
+        String canLogout = user.canLogout() ? "tak" : "nie";
+        updateEntry(scoreboard, logoutLabel, canLogout);
         updateEntry(scoreboard, deathLabel, user.getDeaths());
         updateEntry(scoreboard, killLabel, user.getKills());
         updateEntry(scoreboard, moneyLabel, user.getMoney());
         p.setScoreboard(scoreboard);
+    }
+
+    private void addEntry(Scoreboard scoreboard, Objective objective, String name, String value, int position) {
+        Team t = scoreboard.registerNewTeam(name);
+        t.addEntry(name);
+        t.setSuffix(" " + value);
+        Score score = objective.getScore(name);
+        score.setScore(position);
     }
 
     private void addEntry(Scoreboard scoreboard, Objective objective, String name, int value, int position) {
@@ -71,6 +87,9 @@ public class SidebarData {
     private void updateEntry(Scoreboard scoreboard, String name, int value) {
         Team t = scoreboard.getTeam(name);
         t.setSuffix(" " + value);
-
+    }
+    private void updateEntry(Scoreboard scoreboard, String name, String value) {
+        Team t = scoreboard.getTeam(name);
+        t.setSuffix(" " + value);
     }
 }

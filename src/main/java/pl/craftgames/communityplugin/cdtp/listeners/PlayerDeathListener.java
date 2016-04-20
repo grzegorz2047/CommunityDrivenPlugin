@@ -29,6 +29,10 @@ public class PlayerDeathListener implements Listener {
         }
         plugin.getSQLManager().incrementColumn(e.getEntity().getName(), PlayerColumns.DEATHS, 1);
         User user = plugin.getUserManager().getUsers().get(e.getEntity().getName());
+        if(user == null){
+            System.out.println("User jest null!?");
+            return;
+        }
         user.setDeaths(user.getDeaths() + 1);
         plugin.getSidebarData().refreshScoreboard(e.getEntity());
         Player killerPlayer = e.getEntity().getKiller();
@@ -36,6 +40,7 @@ public class PlayerDeathListener implements Listener {
             plugin.getSQLManager().incrementColumn(e.getEntity().getKiller().getName(), PlayerColumns.KILLS, 1);
             User killer = plugin.getUserManager().getUsers().get(e.getEntity().getKiller().getName());
             killer.setMoney(killer.getMoney() + plugin.getSettingsManager().getMoneyForKill());
+            plugin.getSQLManager().incrementColumn(e.getEntity().getKiller().getName(), PlayerColumns.MONEY, plugin.getSettingsManager().getMoneyForKill());
             killerPlayer.sendMessage("§6§l+" + plugin.getSettingsManager().getMoneyForKill() + " monet!");
             killer.setKills(killer.getKills() + 1);
             plugin.getSidebarData().refreshScoreboard(e.getEntity().getKiller());

@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import pl.craftgames.communityplugin.cdtp.CDTP;
+import pl.craftgames.communityplugin.cdtp.user.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +37,9 @@ public class AntiLogoutManager {
             Player p = Bukkit.getPlayer(user);
             fightList.remove(user);
             if (p != null) {
+                User obj = plugin.getUserManager().getUsers().get(p.getName());
+                obj.setCanLogout(true);
+                plugin.getSidebarData().refreshScoreboard(p);
                 p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Mozesz juz bezpiecznie sie wylogowac!");
             }
         }

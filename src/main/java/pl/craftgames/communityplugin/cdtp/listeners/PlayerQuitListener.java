@@ -27,7 +27,7 @@ public class PlayerQuitListener implements Listener {
         e.setQuitMessage(null);
         Fight f = plugin.getAntiLogoutManager().getFightList().get(p.getName());
         if (f != null) {
-            p.damage(30);
+
             p.sendMessage(ChatColor.RED + "Wylogowales sie podczas walki!");
             if (!f.getAttacker().equals(p.getName())) {
                 Player attacker = Bukkit.getPlayer(f.getAttacker());

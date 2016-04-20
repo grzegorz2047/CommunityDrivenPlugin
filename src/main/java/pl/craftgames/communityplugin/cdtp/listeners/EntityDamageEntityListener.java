@@ -12,6 +12,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.projectiles.ProjectileSource;
 import pl.craftgames.communityplugin.cdtp.CDTP;
 import pl.craftgames.communityplugin.cdtp.antilogout.Fight;
+import pl.craftgames.communityplugin.cdtp.user.User;
 import pl.grzegorz2047.api.util.ColoringUtil;
 
 /**
@@ -149,8 +150,13 @@ public class EntityDamageEntityListener implements Listener {
         if (vf == null) {
             vf = new Fight(attacker.getName(), attacked.getName(), System.currentTimeMillis());
             plugin.getAntiLogoutManager().getFightList().put(attacked.getName(), vf);
+
+            User obj = plugin.getUserManager().getUsers().get(attacked.getName());
+            obj.setCanLogout(false);
+            plugin.getSidebarData().refreshScoreboard(attacked);
+
             attacked.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Jestes podczas WALKI!");
-            attacked.sendMessage((ColoringUtil.colorText(ChatColor.RED + "" + ChatColor.BOLD + "Mozesz sie wylogowac za {TIME} sekund")).replace("{TIME}", String.valueOf(vf.getCooldown())));
+            attacked.sendMessage((ColoringUtil.colorText("§c§lMusisz poczekać conajmniej {TIME} sekund aby moc sie wylogowac")).replace("{TIME}", String.valueOf(vf.getCooldown())));
         } else {
             vf.setAttacker(attacker.getName());
             vf.setVictim(attacked.getName());
@@ -159,7 +165,13 @@ public class EntityDamageEntityListener implements Listener {
         if (af == null) {
             af = new Fight(attacker.getName(), attacked.getName(), System.currentTimeMillis());
             plugin.getAntiLogoutManager().getFightList().put(attacker.getName(), af);
-            attacker.sendMessage((ColoringUtil.colorText("§c§lMusisz poczekać {TIME} sekund aby moc sie wylogowac")).replace("{TIME}", String.valueOf(af.getCooldown())));
+
+            User obj = plugin.getUserManager().getUsers().get(attacker.getName());
+            obj.setCanLogout(false);
+            plugin.getSidebarData().refreshScoreboard(attacker);
+
+            attacker.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Jestes podczas WALKI!");
+            attacker.sendMessage((ColoringUtil.colorText("§c§lMusisz poczekać conajmniej {TIME} sekund aby moc sie wylogowac")).replace("{TIME}", String.valueOf(af.getCooldown())));
         } else {
             af.setAttacker(attacker.getName());
             af.setVictim(attacked.getName());

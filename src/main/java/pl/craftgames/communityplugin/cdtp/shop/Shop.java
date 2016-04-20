@@ -185,7 +185,7 @@ public class Shop implements Listener {
         }
         if (user.getMoney() >= money) {
             user.setMoney(user.getMoney() - money);
-            plugin.getSQLManager().updatePlayer(user.getUsername(), PlayerColumns.MONEY, String.valueOf(-money));
+            plugin.getSQLManager().incrementColumn(user.getUsername(), PlayerColumns.MONEY, -money);
             for (ItemStack it : tempMenu) {
                 if (it.getType().equals(mat)) {
                     if (it.getDurability() == dur) {

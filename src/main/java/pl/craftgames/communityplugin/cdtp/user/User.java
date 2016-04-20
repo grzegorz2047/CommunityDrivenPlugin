@@ -12,6 +12,7 @@ public class User {
     private int kills;
     private int deaths;
     private int money;
+    private boolean logout = true;
 
 
     public User(String username, int kills, int deaths, int money) {
@@ -51,5 +52,13 @@ public class User {
 
     public Player getPlayer() {
         return Bukkit.getPlayer(username);
+    }
+
+    public boolean canLogout() {
+        return this.logout;
+    }
+
+    public void setCanLogout(boolean canLogout) {
+        this.logout = canLogout;
     }
 }
