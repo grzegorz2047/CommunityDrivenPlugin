@@ -25,7 +25,7 @@ public class TeleportManager {
         for(int i = 0; i < requests.size(); i++){
             TeleportRequest r = requests.get(i);
             if(r.getTeleportTime()<= System.currentTimeMillis()){
-                requests.remove(r);
+
                 Player requester = Bukkit.getPlayer(r.getRequester());
                 if(requester != null){
                     //System.out.print("Odleglosc: "+requester.getLocation().distance(r.getSource()));
@@ -37,6 +37,7 @@ public class TeleportManager {
                     }
 
                 }
+                requests.remove(r);
             }
         }
     }

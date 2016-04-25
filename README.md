@@ -6,6 +6,10 @@ Siema!
 W zakładce Issues możecie dodawać swoje propozycje, co dodać do tego pluginu. Propozycja z największą ilością lików (Trzeba wpisać znak ':' aby wyświetlić możliwe emotikony) :+1: 
 zostanie zaimplementowana do pluginu. 
 
+
+Projekt będzie dostępny na dev.bukkit: http://dev.bukkit.org/bukkit-plugins/survivalpvp/
+Tylko muszę doprowadzić do porządku kity, wiadomości i uprawnienia.
+
 Propozycje można składać także tutaj:
 
 http://craftgames.pl/forum/forumdisplay.php?fid=12
@@ -14,3 +18,4 @@ W zakładce Issues możecie także pisać swoje uwagi do kodu oraz zgłaszać bu
 
 Propozycje starajcie się aby były jak najbardziej elementarne typu wybuchowe owce kiedy próbujemy je ostrzyc itd.
 Zapraszamy do współpracy!
+

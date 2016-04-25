@@ -1,6 +1,7 @@
 package pl.craftgames.communityplugin.cdtp.listeners;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -34,22 +35,29 @@ public class PlayerDeathListener implements Listener {
             return;
         }
         user.setDeaths(user.getDeaths() + 1);
-        plugin.getSidebarData().refreshScoreboard(e.getEntity());
+        user.setCanLogout(true);
+        e.getEntity().sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Mozesz juz bezpiecznie sie wylogowac!");
+
         Player killerPlayer = e.getEntity().getKiller();
         if (killerPlayer != null) {
             plugin.getSQLManager().incrementColumn(e.getEntity().getKiller().getName(), PlayerColumns.KILLS, 1);
             User killer = plugin.getUserManager().getUsers().get(e.getEntity().getKiller().getName());
+
             killer.setMoney(killer.getMoney() + plugin.getSettingsManager().getMoneyForKill());
             plugin.getSQLManager().incrementColumn(e.getEntity().getKiller().getName(), PlayerColumns.MONEY, plugin.getSettingsManager().getMoneyForKill());
             killerPlayer.sendMessage("§6§l+" + plugin.getSettingsManager().getMoneyForKill() + " monet!");
             killer.setKills(killer.getKills() + 1);
-            plugin.getSidebarData().refreshScoreboard(e.getEntity().getKiller());
+
             Bukkit.broadcastMessage("§c§l" + killer.getUsername() + "§r§7 zabil " + "§c§l" + user.getUsername());
             Fight f = plugin.getAntiLogoutManager().getFightList().get(e.getEntity().getName());
             String attacker = f.getAttacker();
             String victim = f.getVictim();
-            plugin.getAntiLogoutManager().getFightList().remove(attacker);
+
+            //plugin.getAntiLogoutManager().getFightList().remove(attacker);
             plugin.getAntiLogoutManager().getFightList().remove(victim);
+
+            plugin.getSidebarData().refreshScoreboard(e.getEntity());
+            plugin.getSidebarData().refreshScoreboard(killerPlayer);
         }
     }
 }

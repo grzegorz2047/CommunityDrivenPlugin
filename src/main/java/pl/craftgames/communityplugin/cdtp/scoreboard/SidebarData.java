@@ -15,7 +15,7 @@ public class SidebarData {
     private String killLabel = "§7Zabojstwa:§c§l";
     private String deathLabel = "§7Smierci:§c§l";
     private String moneyLabel = "§7Monety:§c§l";
-    private String logoutLabel = "§c§lLogout:";
+    private String logoutLabel = "§4§lLogout:";
 
     public SidebarData(CDTP plugin) {
         this.plugin = plugin;
@@ -37,14 +37,14 @@ public class SidebarData {
 
 
         addEntry(scoreboard, objective, logoutLabel, "tak", 6);
-        addEntry(scoreboard, objective, killLabel, user.getDeaths(), 5);
-        addEntry(scoreboard, objective, deathLabel, user.getKills(), 4);
+        addEntry(scoreboard, objective, killLabel, user.getKills(), 5);
+        addEntry(scoreboard, objective, deathLabel, user.getDeaths(), 4);
         addEntry(scoreboard, objective, moneyLabel, user.getMoney(), 3);
 
         Score info = objective.getScore("§7Twoja ranga:");
         info.setScore(2);
         Score rank;
-        if (p.hasPermission("lobby.svip")) {
+        if (p.hasPermission("lobby.ekipa")) {
             rank = objective.getScore("§c§lEKIPA");
         } else if (p.hasPermission("lobby.svip")) {
             rank = objective.getScore("§6§lVIP");

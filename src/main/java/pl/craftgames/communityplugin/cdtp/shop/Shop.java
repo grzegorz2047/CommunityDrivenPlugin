@@ -33,7 +33,7 @@ public class Shop implements Listener {
     public Shop(CDTP plugin) {
         //Bukkit.getPluginManager().registerEvents(this, plugin);
         this.plugin = plugin;
-        main.setItem(3, CreateItemUtil.createItem(Material.CHAINMAIL_CHESTPLATE, "Przedmioty jednorazowe"));
+        main.setItem(4, CreateItemUtil.createItem(Material.CHAINMAIL_CHESTPLATE, "Przedmioty jednorazowe"));
         for (int j = 0; j < main.getSize(); j++) {
             if (main.getItem(j) == null) {
                 main.setItem(j, new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getData()));
@@ -154,8 +154,9 @@ public class Shop implements Listener {
                 }
                 if (e.getClicked().getType().equals(Material.LAVA_BUCKET)) {
                     checkAndBuyItem(Material.LAVA_BUCKET, (byte) 0, user, 60);
-
-
+                }
+                if (e.getClicked().getType().equals(Material.ENDER_CHEST)) {
+                    checkAndBuyItem(Material.ENDER_CHEST, (byte) 0, user, 200);
                 }
                 //System.out.print("Durability: "+e.getClicked().getDurability());
                 if (e.getClicked().getType().equals(Material.GOLDEN_APPLE)) {
@@ -220,7 +221,8 @@ public class Shop implements Listener {
         tempMenu.setItem(28, CreateItemUtil.createItem(Material.LAVA_BUCKET, 1, "Wiadro z lawa", new String[]{"Koszt:", "60"}));
         tempMenu.setItem(29, CreateItemUtil.createItem(Material.GOLDEN_APPLE, 10, "Zlote jablka", new String[]{"Koszt:", "100"}));
         tempMenu.setItem(30, CreateItemUtil.createItem(new ItemStack(Material.GOLDEN_APPLE, 1, (byte) 1), "Kox jablko", new String[]{"Koszt:", "150"}));
-        tempMenu.setItem(31, CreateItemUtil.createItem(new ItemStack(Material.COOKED_BEEF, 10, (byte) 1), "Upieczone miesa krow", new String[]{"Koszt:", "60"}));
+        tempMenu.setItem(31, CreateItemUtil.createItem(new ItemStack(Material.COOKED_BEEF, 10, (byte) 0), "Upieczone miesa krow", new String[]{"Koszt:", "60"}));
+        tempMenu.setItem(32, CreateItemUtil.createItem(new ItemStack(Material.ENDER_CHEST, 1, (byte) 0), "EnderChest", new String[]{"Koszt:", "200"}));
 
     }
 
