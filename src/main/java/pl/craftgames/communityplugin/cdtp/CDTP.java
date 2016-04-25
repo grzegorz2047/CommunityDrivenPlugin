@@ -1,8 +1,11 @@
 package pl.craftgames.communityplugin.cdtp;
 
+import java.util.logging.Level;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
 import pl.craftgames.communityplugin.cdtp.antilogout.AntiLogoutManager;
 import pl.craftgames.communityplugin.cdtp.commands.cobblex.CobbleXCommand;
 import pl.craftgames.communityplugin.cdtp.commands.drop.DropCommand;
@@ -12,7 +15,11 @@ import pl.craftgames.communityplugin.cdtp.commands.spawn.SpawnCommand;
 import pl.craftgames.communityplugin.cdtp.commands.top.TopCommand;
 import pl.craftgames.communityplugin.cdtp.commands.vip.VIPCommand;
 import pl.craftgames.communityplugin.cdtp.database.SQLManager;
-import pl.craftgames.communityplugin.cdtp.listeners.*;
+import pl.craftgames.communityplugin.cdtp.listeners.EntityDamageEntityListener;
+import pl.craftgames.communityplugin.cdtp.listeners.PlayerDeathListener;
+import pl.craftgames.communityplugin.cdtp.listeners.PlayerJoinListener;
+import pl.craftgames.communityplugin.cdtp.listeners.PlayerQuitListener;
+import pl.craftgames.communityplugin.cdtp.listeners.PlayerRespawnListener;
 import pl.craftgames.communityplugin.cdtp.scoreboard.SidebarData;
 import pl.craftgames.communityplugin.cdtp.shop.Shop;
 import pl.craftgames.communityplugin.cdtp.tasks.TaskManager;
@@ -32,13 +39,6 @@ public class CDTP extends JavaPlugin {
     private UserManager userManager;
     private SidebarData sidebarData;
     private Shop shop;
-    @Override
-    public void onDisable() {
-        this.antiLogoutManager.dispose();
-        this.taskManager.dispose();
-
-        System.out.println(this.getName() + " zostal wlaczony!");
-    }
 
     @Override
     public void onEnable() {
@@ -51,7 +51,16 @@ public class CDTP extends JavaPlugin {
         this.shop = new Shop(this);
         registerListeners();
         registerCommands();
-        System.out.println(this.getName() + " zostal wylaczony!");
+
+        Bukkit.getLogger().log(Level.INFO, "[" + this.getName() + "] Plugin zostal wlaczony");
+    }
+
+    @Override
+    public void onDisable() {
+        this.antiLogoutManager.dispose();
+        this.taskManager.dispose();
+
+        Bukkit.getLogger().log(Level.INFO, "[" + this.getName() + "] Plugin zostal wylaczony");
     }
 
     private void registerCommands() {
@@ -71,7 +80,7 @@ public class CDTP extends JavaPlugin {
         pm.registerEvents(new PlayerRespawnListener(this), this);
         pm.registerEvents(new EntityDamageEntityListener(this), this);
         pm.registerEvents(new PlayerDeathListener(this), this);
-        pm.registerEvents(shop, this);//instance only 1
+        pm.registerEvents(shop, this); // only one instance allowed
     }
 
     public Settings getSettings() {
