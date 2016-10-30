@@ -37,7 +37,7 @@ public class AntiLogoutManager {
             Player p = Bukkit.getPlayer(user);
             fightList.remove(user);
             if (p != null) {
-                User obj = plugin.getUserManager().getUsers().get(p.getName());
+                User obj = plugin.getUserManager().getUsersstats().get(p.getName());
                 obj.setCanLogout(true);
                 plugin.getSidebarData().refreshScoreboard(p);
                 p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Mozesz juz bezpiecznie sie wylogowac!");

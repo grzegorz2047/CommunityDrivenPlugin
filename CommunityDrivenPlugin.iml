@@ -30,5 +30,23 @@
     <orderEntry type="library" name="Maven: net.sf.opencsv:opencsv:2.0" level="project" />
     <orderEntry type="library" name="Maven: com.nijikokun:iconomy:5.0" level="project" />
     <orderEntry type="library" name="Maven: org.bukkit:bukkit:1.8.6-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: Database:pl.grzegorz2047:1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/Database-1.0-SNAPSHOT.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: ServersManager:pl.grzegorz2047:1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/ServersManager-1.0-SNAPSHOT.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

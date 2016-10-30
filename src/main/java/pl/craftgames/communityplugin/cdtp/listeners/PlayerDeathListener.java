@@ -7,7 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import pl.craftgames.communityplugin.cdtp.CDTP;
-import pl.craftgames.communityplugin.cdtp.Settings;
 import pl.craftgames.communityplugin.cdtp.antilogout.Fight;
 import pl.craftgames.communityplugin.cdtp.database.PlayerColumns;
 import pl.craftgames.communityplugin.cdtp.user.User;
@@ -29,7 +28,7 @@ public class PlayerDeathListener implements Listener {
             return;
         }
         plugin.getSQLManager().incrementColumn(e.getEntity().getName(), PlayerColumns.DEATHS, 1);
-        User user = plugin.getUserManager().getUsers().get(e.getEntity().getName());
+        User user = plugin.getUserManager().getUsersstats().get(e.getEntity().getName());
         if(user == null){
             System.out.println("User jest null!?");
             return;
@@ -41,7 +40,7 @@ public class PlayerDeathListener implements Listener {
         Player killerPlayer = e.getEntity().getKiller();
         if (killerPlayer != null) {
             plugin.getSQLManager().incrementColumn(e.getEntity().getKiller().getName(), PlayerColumns.KILLS, 1);
-            User killer = plugin.getUserManager().getUsers().get(e.getEntity().getKiller().getName());
+            User killer = plugin.getUserManager().getUsersstats().get(e.getEntity().getKiller().getName());
 
             killer.setMoney(killer.getMoney() + plugin.getSettingsManager().getMoneyForKill());
             plugin.getSQLManager().incrementColumn(e.getEntity().getKiller().getName(), PlayerColumns.MONEY, plugin.getSettingsManager().getMoneyForKill());

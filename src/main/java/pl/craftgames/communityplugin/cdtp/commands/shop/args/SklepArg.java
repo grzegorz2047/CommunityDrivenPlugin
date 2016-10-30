@@ -20,7 +20,7 @@ public class SklepArg implements Arg {
     @Override
     public void execute(CommandSender sender, String[] args) {
         Player p = (Player) sender;
-        User user = plugin.getUserManager().getUsers().get(p.getName());
+        User user = plugin.getUserManager().getUsersstats().get(p.getName());
         plugin.getShop().showShop(user, Shop.SHOPVIEW.MAIN_MENU);
     }
 }

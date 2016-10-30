@@ -71,7 +71,7 @@ public class Shop implements Listener {
     @EventHandler
     void onClick(ChooseItemEvent e) {
         String title = e.getInventory().getTitle();
-        User user = plugin.getUserManager().getUsers().get(e.getPlayer().getName());
+        User user = plugin.getUserManager().getUsersstats().get(e.getPlayer().getName());
         //System.out.println("1");
         if (title != null) {
             if (e.getClicked() == null) {

@@ -77,6 +77,19 @@
             <artifactId>bukkit</artifactId>
             <version>1.8.6-R0.1-SNAPSHOT</version>
         </dependency>
-
+        <dependency>
+            <groupId>Database</groupId>
+            <artifactId>pl.grzegorz2047</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/Database-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>ServersManager</groupId>
+            <artifactId>pl.grzegorz2047</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/ServersManager-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>

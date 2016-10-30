@@ -33,7 +33,7 @@ public class SidebarData {
         p.setHealth(p.getHealth());
 
 
-        User user = plugin.getUserManager().getUsers().get(p.getName());
+        User user = plugin.getUserManager().getUsersstats().get(p.getName());
 
 
         addEntry(scoreboard, objective, logoutLabel, "tak", 6);
@@ -41,24 +41,13 @@ public class SidebarData {
         addEntry(scoreboard, objective, deathLabel, user.getDeaths(), 4);
         addEntry(scoreboard, objective, moneyLabel, user.getMoney(), 3);
 
-        Score info = objective.getScore("§7Twoja ranga:");
-        info.setScore(2);
-        Score rank;
-        if (p.hasPermission("lobby.ekipa")) {
-            rank = objective.getScore("§c§lEKIPA");
-        } else if (p.hasPermission("lobby.svip")) {
-            rank = objective.getScore("§6§lVIP");
-        } else {
-            rank = objective.getScore("§7§lGRACZ");
-        }
-        rank.setScore(1);
 
 
         p.setScoreboard(scoreboard);
     }
 
     public void refreshScoreboard(Player p) {
-        User user = plugin.getUserManager().getUsers().get(p.getName());
+        User user = plugin.getUserManager().getUsersstats().get(p.getName());
         Scoreboard scoreboard = p.getScoreboard();
         String canLogout = user.canLogout() ? "tak" : "nie";
         updateEntry(scoreboard, logoutLabel, canLogout);

@@ -5,10 +5,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import pl.craftgames.communityplugin.cdtp.CDTP;
-import pl.craftgames.communityplugin.cdtp.database.SQLManager;
 import pl.craftgames.communityplugin.cdtp.kits.Kits;
-import pl.craftgames.communityplugin.cdtp.scoreboard.SidebarData;
 import pl.craftgames.communityplugin.cdtp.user.User;
+import pl.grzegorz2047.databaseapi.SQLUser;
 
 /**
  * Created by grzegorz2047 on 17.04.2016
@@ -28,13 +27,12 @@ public class PlayerJoinListener implements Listener {
             return;
         }
         Player p = e.getPlayer();
-        p.addAttachment(plugin, "essentials.sethome", true);
-        p.addAttachment(plugin, "essentials.delhome", true);
-        p.addAttachment(plugin, "essentials.home", true);
         plugin.getSQLManager().addPlayer(p);
         User user = plugin.getSQLManager().getPlayer(p);
+        SQLUser sqlUser = plugin.getPlayerManager().getPlayer(p);
         //System.out.print("User jest null");
-        plugin.getUserManager().getUsers().put(p.getName(), user);
+        plugin.getUserManager().getUsersstats().put(p.getName(), user);
+        plugin.getUserManager().getUsersCG().put(p.getName(), sqlUser);
 
 
         plugin.getSidebarData().createScoreboard(p);

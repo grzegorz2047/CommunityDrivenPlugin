@@ -151,7 +151,7 @@ public class EntityDamageEntityListener implements Listener {
             vf = new Fight(attacker.getName(), attacked.getName(), System.currentTimeMillis());
             plugin.getAntiLogoutManager().getFightList().put(attacked.getName(), vf);
 
-            User obj = plugin.getUserManager().getUsers().get(attacked.getName());
+            User obj = plugin.getUserManager().getUsersstats().get(attacked.getName());
             obj.setCanLogout(false);
             plugin.getSidebarData().refreshScoreboard(attacked);
 
@@ -166,7 +166,7 @@ public class EntityDamageEntityListener implements Listener {
             af = new Fight(attacker.getName(), attacked.getName(), System.currentTimeMillis());
             plugin.getAntiLogoutManager().getFightList().put(attacker.getName(), af);
 
-            User obj = plugin.getUserManager().getUsers().get(attacker.getName());
+            User obj = plugin.getUserManager().getUsersstats().get(attacker.getName());
             obj.setCanLogout(false);
             plugin.getSidebarData().refreshScoreboard(attacker);
 

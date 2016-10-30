@@ -1,0 +1,28 @@
+mysql:
+        player:
+            host: sv2.craftgames.pl
+            user:
+            password:
+            db:
+            port: 3306
+        message:
+            host: sv2.craftgames.pl
+            user:
+            password:
+            db:
+            port: 3306
+            minigame: 'Community'
+        money:
+            host: sv2.craftgames.pl
+            user:
+            password:
+            db:
+            port: 3306
+            table: 'CommunityMoney'
+        stats:
+            host: sv2.craftgames.pl
+            user:
+            password:
+            db:
+            port: 3306
+            table: 'CommunityStats'

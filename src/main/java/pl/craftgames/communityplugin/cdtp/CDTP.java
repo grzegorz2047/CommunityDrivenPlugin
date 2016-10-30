@@ -15,16 +15,16 @@ import pl.craftgames.communityplugin.cdtp.commands.spawn.SpawnCommand;
 import pl.craftgames.communityplugin.cdtp.commands.top.TopCommand;
 import pl.craftgames.communityplugin.cdtp.commands.vip.VIPCommand;
 import pl.craftgames.communityplugin.cdtp.database.SQLManager;
-import pl.craftgames.communityplugin.cdtp.listeners.EntityDamageEntityListener;
-import pl.craftgames.communityplugin.cdtp.listeners.PlayerDeathListener;
-import pl.craftgames.communityplugin.cdtp.listeners.PlayerJoinListener;
-import pl.craftgames.communityplugin.cdtp.listeners.PlayerQuitListener;
-import pl.craftgames.communityplugin.cdtp.listeners.PlayerRespawnListener;
+import pl.craftgames.communityplugin.cdtp.listeners.*;
 import pl.craftgames.communityplugin.cdtp.scoreboard.SidebarData;
 import pl.craftgames.communityplugin.cdtp.shop.Shop;
 import pl.craftgames.communityplugin.cdtp.tasks.TaskManager;
 import pl.craftgames.communityplugin.cdtp.teleport.TeleportManager;
 import pl.craftgames.communityplugin.cdtp.user.UserManager;
+import pl.grzegorz2047.databaseapi.DatabaseAPI;
+import pl.grzegorz2047.serversmanagement.api.file.YmlFileHandler;
+
+import javax.xml.crypto.Data;
 
 /**
  * Created by grzegorz2047 on 17.04.2016 for Nukkit server
@@ -39,7 +39,7 @@ public class CDTP extends JavaPlugin {
     private UserManager userManager;
     private SidebarData sidebarData;
     private Shop shop;
-
+    private DatabaseAPI playerManager;
     @Override
     public void onEnable() {
         sidebarData = new SidebarData(this);
@@ -51,7 +51,15 @@ public class CDTP extends JavaPlugin {
         this.shop = new Shop(this);
         registerListeners();
         registerCommands();
-
+        YmlFileHandler configFile = new YmlFileHandler(this, this.getDataFolder().getPath(), "config.yml");
+        configFile.load();
+        playerManager = new DatabaseAPI(
+                configFile.getConfig().getString("mysql.player.host"),
+                configFile.getConfig().getInt("mysql.player.port"),
+                configFile.getConfig().getString("mysql.player.db"),
+                configFile.getConfig().getString("mysql.player.user"),
+                configFile.getConfig().getString("mysql.player.password")
+        );
         Bukkit.getLogger().log(Level.INFO, "[" + this.getName() + "] Plugin zostal wlaczony");
     }
 
@@ -80,6 +88,7 @@ public class CDTP extends JavaPlugin {
         pm.registerEvents(new PlayerRespawnListener(this), this);
         pm.registerEvents(new EntityDamageEntityListener(this), this);
         pm.registerEvents(new PlayerDeathListener(this), this);
+        pm.registerEvents(new PlayerChatListener(this), this);
         pm.registerEvents(shop, this); // only one instance allowed
     }
 
@@ -113,5 +122,9 @@ public class CDTP extends JavaPlugin {
 
     public Shop getShop() {
         return shop;
+    }
+
+    public DatabaseAPI getPlayerManager() {
+        return playerManager;
     }
 }

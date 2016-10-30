@@ -23,7 +23,8 @@ public class PlayerQuitListener implements Listener {
     @EventHandler
     void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
-        plugin.getUserManager().getUsers().remove(p.getName());
+        plugin.getUserManager().getUsersstats().remove(p.getName());
+        plugin.getUserManager().getUsersCG().remove(p.getDisplayName());
         e.setQuitMessage(null);
         Fight f = plugin.getAntiLogoutManager().getFightList().get(p.getName());
         if (f != null) {
