@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.ItemStack;
 import pl.craftgames.communityplugin.cdtp.CDTP;
 import pl.craftgames.communityplugin.cdtp.antilogout.Fight;
 
@@ -33,7 +34,8 @@ public class PlayerQuitListener implements Listener {
             if (!f.getAttacker().equals(p.getName())) {
                 Player attacker = Bukkit.getPlayer(f.getAttacker());
                 if (attacker != null) {
-                    attacker.sendMessage(("§7§c§lGracz {PLAYER} wylogowal sie podczas walki!").replace("{PLAYER}", p.getName()));
+                    attacker.sendMessage(("§7§c§lGracz {PLAYER} wylogowal sie podczas walki i stracil wszystkie przedmioty!").replace("{PLAYER}", p.getName()));
+                    attacker.damage(40);
                 }
             }
         }

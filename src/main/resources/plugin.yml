@@ -25,3 +25,9 @@ commands:
     top:
         description: Topka
         aliases: [topka, top10]
+    home:
+        description: home
+    sethome:
+        description: sethome
+    delhome:
+        description: home

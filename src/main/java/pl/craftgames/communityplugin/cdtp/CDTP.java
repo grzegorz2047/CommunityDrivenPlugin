@@ -10,6 +10,9 @@ import pl.craftgames.communityplugin.cdtp.antilogout.AntiLogoutManager;
 import pl.craftgames.communityplugin.cdtp.commands.cobblex.CobbleXCommand;
 import pl.craftgames.communityplugin.cdtp.commands.drop.DropCommand;
 import pl.craftgames.communityplugin.cdtp.commands.help.HelpCommand;
+import pl.craftgames.communityplugin.cdtp.commands.home.DelHomeCommand;
+import pl.craftgames.communityplugin.cdtp.commands.home.HomeCommand;
+import pl.craftgames.communityplugin.cdtp.commands.home.SetHomeCommand;
 import pl.craftgames.communityplugin.cdtp.commands.shop.ShopCommand;
 import pl.craftgames.communityplugin.cdtp.commands.spawn.SpawnCommand;
 import pl.craftgames.communityplugin.cdtp.commands.top.TopCommand;
@@ -79,6 +82,9 @@ public class CDTP extends JavaPlugin {
         this.getCommand("shop").setExecutor(new ShopCommand("shop", this));
         this.getCommand("pomoc").setExecutor(new HelpCommand("pomoc", new String[]{"help", "pomoc", "commands"}, this));
         this.getCommand("cobblex").setExecutor(new CobbleXCommand("cobblex", new String[]{"cobblex", "cx", "pandora"}, this));
+        this.getCommand("home").setExecutor(new HomeCommand("home", this));
+        this.getCommand("sethome").setExecutor(new SetHomeCommand("sethome", this));
+        this.getCommand("delhome").setExecutor(new DelHomeCommand("delhome", this));
     }
 
     private void registerListeners() {
@@ -89,6 +95,7 @@ public class CDTP extends JavaPlugin {
         pm.registerEvents(new EntityDamageEntityListener(this), this);
         pm.registerEvents(new PlayerDeathListener(this), this);
         pm.registerEvents(new PlayerChatListener(this), this);
+        pm.registerEvents(new PlaceBreakListener(this), this);
         pm.registerEvents(shop, this); // only one instance allowed
     }
 

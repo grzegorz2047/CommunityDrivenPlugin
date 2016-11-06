@@ -6,7 +6,7 @@ package pl.craftgames.communityplugin.cdtp;
 public class Settings {
 
     private int teleportSpawnCooldown = 10;
-    private int protectedSpawnRadius = 30;
+    private int protectedSpawnRadius = 60;
     private int moneyForKill = 3;
     //private int moneyForDeath = -1;
 

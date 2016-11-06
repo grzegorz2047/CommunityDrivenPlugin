@@ -40,6 +40,15 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="Maven: Nocheatplus:pl.grzegorz2047:1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/NoCheatPlus.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="Maven: ServersManager:pl.grzegorz2047:1.0">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/ServersManager-1.0-SNAPSHOT.jar!/" />

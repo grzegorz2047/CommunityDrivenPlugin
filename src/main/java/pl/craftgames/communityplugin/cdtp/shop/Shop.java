@@ -17,6 +17,7 @@ import pl.craftgames.communityplugin.cdtp.database.PlayerColumns;
 import pl.craftgames.communityplugin.cdtp.user.User;
 import pl.grzegorz2047.api.itemmenu.event.ChooseItemEvent;
 import pl.grzegorz2047.api.util.CreateItemUtil;
+import pl.grzegorz2047.databaseapi.SQLUser;
 
 /**
  * Created by Grzegorz2047. 03.12.2015.
@@ -163,7 +164,8 @@ public class Shop implements Listener {
                     if (e.getClicked().getDurability() == (byte) 0) {
                         checkAndBuyItem(Material.GOLDEN_APPLE, (byte) 0, user, 100);
                     } else if (e.getClicked().getDurability() == (byte) 1) {
-                        if (!p.hasPermission("lobby.svip")) {
+                        SQLUser sqlUser = plugin.getPlayerManager().getPlayer(p);
+                        if (sqlUser.getRank().equals("Gracz")) {
                             p.sendMessage(ChatColor.RED + "Przedmiot jedynie dla rangi VIP!");
                             return;
                         }

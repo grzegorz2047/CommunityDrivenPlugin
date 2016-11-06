@@ -1,6 +1,7 @@
 package pl.craftgames.communityplugin.cdtp.database;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import pl.craftgames.communityplugin.cdtp.CDTP;
 import pl.craftgames.communityplugin.cdtp.user.User;
@@ -85,6 +86,19 @@ public class SQLManager {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        try {
+            String query = "CREATE TABLE IF NOT EXISTS `" + sqlTablePrefix + "playerHomes`"
+                    + "(username VARCHAR(16),"
+                    + "world VARCHAR(32),"
+                    + "x DOUBLE ,"
+                    + "y DOUBLE ,"
+                    + "z DOUBLE ,"
+                    + "PRIMARY KEY(username));";
+            statement = this.connection.createStatement();
+            statement.execute(query);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public Connection getConnection() {
@@ -105,6 +119,40 @@ public class SQLManager {
         try {
             statement = this.connection.createStatement();
             statement.execute("INSERT OR IGNORE INTO `" + sqlTablePrefix + "players` VALUES('" + player.getName() + "', '" + 0 + "', '" + 0 + "', '" + 0 + "')");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void addHome(Player player) {
+        try {
+            Location location = player.getLocation();
+            statement = this.connection.createStatement();
+            statement.execute("INSERT OR IGNORE INTO `" + sqlTablePrefix + "playerHomes` VALUES('" + player.getName() + "', '" + location.getWorld().getName() + "', '" + location.getX() + "', '" + location.getY() + "', '" + location.getZ() + "')");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public Location getHome(Player player) {
+        try {
+            statement = this.connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM `" + sqlTablePrefix + "playerHomes` WHERE username ='" + player.getName() + "'");
+            while (rs.next()) {
+                return new Location(Bukkit.getWorld(rs.getString("world")),rs.getDouble("x"),rs.getDouble("y"),rs.getDouble("z"));
+            }
+            return null;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public void removeHome(Player player) {
+        try {
+            Location location = player.getLocation();
+            statement = this.connection.createStatement();
+            statement.execute("DELETE FROM `" + sqlTablePrefix + "playerHomes` WHERE username ='" + player.getName() + "'");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -211,7 +259,7 @@ public class SQLManager {
                 int kills = result.getInt("kills");
                 int deaths = result.getInt("deaths");
                 int money = result.getInt("money");
-                p.sendMessage("§7"+(index++) + ". Gracz §c§l" + username+"§7§l:");
+                p.sendMessage("§7" + (index++) + ". Gracz §c§l" + username + "§7§l:");
                 p.sendMessage("§7zabojstwa: §c§l" + kills + "§7, smierci: §c§l" + deaths + "§7, monety: §c§l" + money);
             }
 

@@ -24,6 +24,7 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
+        e.setDeathMessage("");
         if (e.getEntity() == null) {
             return;
         }
@@ -42,7 +43,9 @@ public class PlayerDeathListener implements Listener {
             plugin.getSQLManager().incrementColumn(e.getEntity().getKiller().getName(), PlayerColumns.KILLS, 1);
             User killer = plugin.getUserManager().getUsersstats().get(e.getEntity().getKiller().getName());
 
-            killer.setMoney(killer.getMoney() + plugin.getSettingsManager().getMoneyForKill());
+            killer.
+                    setMoney(killer.getMoney() +
+                    plugin.getSettingsManager().getMoneyForKill());
             plugin.getSQLManager().incrementColumn(e.getEntity().getKiller().getName(), PlayerColumns.MONEY, plugin.getSettingsManager().getMoneyForKill());
             killerPlayer.sendMessage("§6§l+" + plugin.getSettingsManager().getMoneyForKill() + " monet!");
             killer.setKills(killer.getKills() + 1);

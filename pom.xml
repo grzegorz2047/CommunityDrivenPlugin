@@ -85,6 +85,13 @@
             <systemPath>${project.basedir}/libs/Database-1.0-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
+            <groupId>Nocheatplus</groupId>
+            <artifactId>pl.grzegorz2047</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/NoCheatPlus.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>ServersManager</groupId>
             <artifactId>pl.grzegorz2047</artifactId>
             <version>1.0</version>
