@@ -46,16 +46,20 @@ public class GroznoArg implements Arg {
                         ItemStack chestplate = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
                         ItemStack leggings = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
                         ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS, 1);
+                        ItemStack sword = new ItemStack(Material.DIAMOND_SWORD, 1);
 
                         helmet.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
                         chestplate.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
                         leggings.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
                         boots.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
+                        sword.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 2);
 
                         kiter.getInventory().setHelmet(helmet);
                         kiter.getInventory().setChestplate(chestplate);
                         kiter.getInventory().setLeggings(leggings);
                         kiter.getInventory().setBoots(boots);
+
+                        kiter.getInventory().addItem(sword);
 
                         p.sendMessage("Gosciu " + args[1] + " dostal kit!");
                     } else {
