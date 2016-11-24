@@ -1,5 +1,8 @@
 package pl.craftgames.communityplugin.cdtp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
@@ -9,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pl.craftgames.communityplugin.cdtp.antilogout.AntiLogoutManager;
 import pl.craftgames.communityplugin.cdtp.commands.cobblex.CobbleXCommand;
 import pl.craftgames.communityplugin.cdtp.commands.drop.DropCommand;
+import pl.craftgames.communityplugin.cdtp.commands.grozno.GroznoCommand;
 import pl.craftgames.communityplugin.cdtp.commands.help.HelpCommand;
 import pl.craftgames.communityplugin.cdtp.commands.home.DelHomeCommand;
 import pl.craftgames.communityplugin.cdtp.commands.home.HomeCommand;
@@ -43,6 +47,7 @@ public class CDTP extends JavaPlugin {
     private SidebarData sidebarData;
     private Shop shop;
     private DatabaseAPI playerManager;
+    private HashMap<String, ArrayList<String>> teams = new HashMap<String, ArrayList<String>>();
     @Override
     public void onEnable() {
         sidebarData = new SidebarData(this);
@@ -85,6 +90,7 @@ public class CDTP extends JavaPlugin {
         this.getCommand("home").setExecutor(new HomeCommand("home", this));
         this.getCommand("sethome").setExecutor(new SetHomeCommand("sethome", this));
         this.getCommand("delhome").setExecutor(new DelHomeCommand("delhome", this));
+        this.getCommand("grozno").setExecutor(new GroznoCommand("grozno", this));
     }
 
     private void registerListeners() {
@@ -133,5 +139,9 @@ public class CDTP extends JavaPlugin {
 
     public DatabaseAPI getPlayerManager() {
         return playerManager;
+    }
+
+    public HashMap<String, ArrayList<String>> getTeams() {
+        return teams;
     }
 }

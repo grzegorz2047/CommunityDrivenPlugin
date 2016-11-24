@@ -31,3 +31,5 @@ commands:
         description: sethome
     delhome:
         description: home
+    grozno:
+        description: GROZNO

@@ -15,6 +15,8 @@ import pl.craftgames.communityplugin.cdtp.antilogout.Fight;
 import pl.craftgames.communityplugin.cdtp.user.User;
 import pl.grzegorz2047.api.util.ColoringUtil;
 
+import java.util.ArrayList;
+
 /**
  * Created by grzegorz2047 on 27.12.2015.
  */
@@ -108,7 +110,7 @@ public class EntityDamageEntityListener implements Listener {
                     return;
                 }
                 checkFight(attacker, attacked);
-
+                checkIfTheSameTeam(event, attacker, attacked);
             }
         } else if (event.getDamager() instanceof Arrow) {
             if (event.getEntity() instanceof Player) {
@@ -118,6 +120,7 @@ public class EntityDamageEntityListener implements Listener {
                 if (attackerEntity instanceof Player) {
                     Player attacker = (Player) attackerEntity;
                     checkFight(attacker, attacked);
+                    checkIfTheSameTeam(event, attacker, attacked);
 
                 }
             }
@@ -129,6 +132,7 @@ public class EntityDamageEntityListener implements Listener {
                 if (attackerEntity instanceof Player) {
                     Player attacker = (Player) attackerEntity;
                     checkFight(attacker, attacked);
+                    checkIfTheSameTeam(event, attacker, attacked);
 
                 }
             }
@@ -139,12 +143,14 @@ public class EntityDamageEntityListener implements Listener {
                 if (attackerEntity instanceof Player) {
                     Player attacker = (Player) attackerEntity;
                     checkFight(attacker, attacked);
+                    checkIfTheSameTeam(event, attacker, attacked);
                 }
             }
         }
     }
 
     public void checkFight(Player attacker, Player attacked) {
+
         Fight vf = plugin.getAntiLogoutManager().getFightList().get(attacked.getName());
         Fight af = plugin.getAntiLogoutManager().getFightList().get(attacker.getName());
         if (vf == null) {
@@ -176,6 +182,14 @@ public class EntityDamageEntityListener implements Listener {
             af.setAttacker(attacker.getName());
             af.setVictim(attacked.getName());
             af.setLastHitTime(System.currentTimeMillis());
+        }
+    }
+
+    private void checkIfTheSameTeam(EntityDamageByEntityEvent e, Player attacker, Player attacked) {
+        for (ArrayList<String> teams : plugin.getTeams().values()) {
+            if (teams.contains(attacker.getName()) && teams.contains(attacker.getName())) {
+                e.setCancelled(true);
+            }
         }
     }
 }

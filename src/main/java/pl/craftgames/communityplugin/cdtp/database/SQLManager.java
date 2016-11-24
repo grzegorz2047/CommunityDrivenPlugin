@@ -259,7 +259,7 @@ public class SQLManager {
                 int kills = result.getInt("kills");
                 int deaths = result.getInt("deaths");
                 int money = result.getInt("money");
-                p.sendMessage("§7" + (index++) + ". Gracz §c§l" + username + "§7§l:");
+                p.sendMessage("§6" + (index++) + "§7. Gracz §c§l" + username + "§7§l:");
                 p.sendMessage("§7zabojstwa: §c§l" + kills + "§7, smierci: §c§l" + deaths + "§7, monety: §c§l" + money);
             }
 

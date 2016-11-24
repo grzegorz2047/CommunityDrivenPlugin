@@ -25,7 +25,7 @@ public class SidebarData {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective objective = scoreboard.registerNewObjective("sidebar", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        objective.setDisplayName("§6§lSerwer spolecznosci CG");
+        objective.setDisplayName("§6§lPseudoHC");
 
         Objective healthObj = scoreboard.registerNewObjective("showhealth", "health");
         healthObj.setDisplaySlot(DisplaySlot.BELOW_NAME);
