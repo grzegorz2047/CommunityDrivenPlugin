@@ -187,7 +187,7 @@ public class EntityDamageEntityListener implements Listener {
 
     private void checkIfTheSameTeam(EntityDamageByEntityEvent e, Player attacker, Player attacked) {
         for (ArrayList<String> teams : plugin.getTeams().values()) {
-            if (teams.contains(attacker.getName()) && teams.contains(attacker.getName())) {
+            if (teams.contains(attacker.getName()) && teams.contains(attacked.getName())) {
                 e.setCancelled(true);
             }
         }

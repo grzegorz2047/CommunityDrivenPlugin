@@ -23,22 +23,35 @@ public class GroznoArg implements Arg {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (sender.getName().equals("xVeenix") || sender.getName().equals("xByczekx")) {
+        if (sender.getName().equals("xVeenix") || sender.getName().equalsIgnoreCase("xBYCZEKx") || sender.getName().equals("grzegorz2047")) {
             Player p = (Player) sender;
+            if(args.length == 0){
+                p.sendMessage("/grozno kit nick - daje kit graczowi");
+                p.sendMessage("/grozno addteam nazwateamu - dodaje druzyn");
+                p.sendMessage("/grozno addtoteam nazwateamu nick - dodaje do druzyny");
+                p.sendMessage("/grozno clear - czysci wszystko");
+                p.sendMessage("/grozno whitelist on/off - wl on/off");
+            }
             if (args.length == 1) {
                 if (args[0].equals("clear")) {
                     plugin.getTeams().clear();
                     p.sendMessage("Usunieto druzyny");
                 }
             } else if (args.length == 2) {
-                if (args[0].equals("clear")) {
-                    plugin.getTeams().clear();
-                    p.sendMessage("Usunieto druzyny");
+                if (args[0].equals("whitelist")) {
+                    if(args[1].equals("on")){
+                        Bukkit.setWhitelist(true);
+                        p.sendMessage("WL TRU");
+                    }else{
+                        Bukkit.setWhitelist(false);
+                        p.sendMessage("WL FALSE");
+                    }
                 }
                 if (args[0].equals("kit")) {
                     Player kiter = Bukkit.getPlayer(args[1]);
 
                     if (kiter != null) {
+                        kiter.getInventory().clear();
                         kiter.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 1, (short) 1));
                         kiter.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 2));
 
@@ -77,7 +90,7 @@ public class GroznoArg implements Arg {
                     plugin.getTeams().get(args[1]).add(args[2]);
                     p.sendMessage("Dodano " + args[2] + " do druzyny " + args[1]);
                 }
-            p.sendMessage("Dales kamienia uzytkownikowi " + args[1]);
+
         }
 
     }

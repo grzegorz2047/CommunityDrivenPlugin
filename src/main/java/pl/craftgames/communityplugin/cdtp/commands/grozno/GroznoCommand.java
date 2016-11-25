@@ -14,6 +14,11 @@ public class GroznoCommand extends BaseCommand {
     public GroznoCommand(String basecmd, CDTP plugin) {
         super(basecmd);
         this.plugin = plugin;
+        this.commands.put("clear", new GroznoArg(plugin));
+        this.commands.put("kit", new GroznoArg(plugin));
+        this.commands.put("addteam", new GroznoArg(plugin));
+        this.commands.put("addtoteam", new GroznoArg(plugin));
+        this.commands.put("whitelist", new GroznoArg(plugin));
         this.commands.put("", new GroznoArg(plugin));
     }
 }
