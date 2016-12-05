@@ -60,7 +60,9 @@ public class GroznoArg implements Arg {
                         ItemStack leggings = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
                         ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS, 1);
                         ItemStack sword = new ItemStack(Material.DIAMOND_SWORD, 1);
+                        ItemStack spade = new ItemStack(Material.DIAMOND_SPADE, 1);
 
+                        spade.addUnsafeEnchantment(Enchantment.DIG_SPEED,5);
                         helmet.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
                         chestplate.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
                         leggings.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
