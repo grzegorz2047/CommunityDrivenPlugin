@@ -75,6 +75,7 @@ public class GroznoArg implements Arg {
                         kiter.getInventory().setBoots(boots);
 
                         kiter.getInventory().addItem(sword);
+                        kiter.getInventory().addItem(spade);
 
                         p.sendMessage("Gosciu " + args[1] + " dostal kit!");
                     } else {
