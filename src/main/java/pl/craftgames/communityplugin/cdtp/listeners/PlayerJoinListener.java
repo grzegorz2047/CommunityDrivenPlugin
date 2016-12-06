@@ -1,19 +1,9 @@
 package pl.craftgames.communityplugin.cdtp.listeners;
 
-import fr.neatmonster.nocheatplus.NCPAPIProvider;
-import fr.neatmonster.nocheatplus.NoCheatPlus;
-import fr.neatmonster.nocheatplus.components.NoCheatPlusAPI;
-import fr.neatmonster.nocheatplus.components.registry.feature.NCPListener;
-import fr.neatmonster.nocheatplus.hooks.NCPHookManager;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.permissions.Permissible;
-import org.bukkit.permissions.Permission;
-import org.bukkit.permissions.PermissionAttachment;
-import org.bukkit.permissions.PermissionAttachmentInfo;
 import pl.craftgames.communityplugin.cdtp.CDTP;
 import pl.craftgames.communityplugin.cdtp.kits.Kits;
 import pl.craftgames.communityplugin.cdtp.user.User;
