@@ -52,6 +52,8 @@ public class GroznoArg implements Arg {
 
                     if (kiter != null) {
                         kiter.getInventory().clear();
+                        ItemStack spade = new ItemStack(Material.DIAMOND_SPADE, 1);
+                        /*
                         kiter.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 1, (short) 1));
                         kiter.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 2));
 
@@ -60,7 +62,7 @@ public class GroznoArg implements Arg {
                         ItemStack leggings = new ItemStack(Material.DIAMOND_LEGGINGS, 1);
                         ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS, 1);
                         ItemStack sword = new ItemStack(Material.DIAMOND_SWORD, 1);
-                        ItemStack spade = new ItemStack(Material.DIAMOND_SPADE, 1);
+
 
                         spade.addUnsafeEnchantment(Enchantment.DIG_SPEED,5);
                         helmet.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
@@ -74,7 +76,7 @@ public class GroznoArg implements Arg {
                         kiter.getInventory().setLeggings(leggings);
                         kiter.getInventory().setBoots(boots);
 
-                        kiter.getInventory().addItem(sword);
+                        kiter.getInventory().addItem(sword);*/
                         kiter.getInventory().addItem(spade);
 
                         p.sendMessage("Gosciu " + args[1] + " dostal kit!");
