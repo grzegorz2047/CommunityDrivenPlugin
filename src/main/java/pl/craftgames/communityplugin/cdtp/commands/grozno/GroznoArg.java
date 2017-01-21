@@ -23,7 +23,7 @@ public class GroznoArg implements Arg {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (sender.getName().equals("xVeenix") || sender.getName().equalsIgnoreCase("xBYCZEKx") || sender.getName().equals("grzegorz2047")) {
+        if (sender.getName().equals("Koem") || sender.getName().equals("xVeenix") || sender.getName().equalsIgnoreCase("xBYCZEKx") || sender.getName().equals("grzegorz2047")) {
             Player p = (Player) sender;
             if(args.length == 0){
                 p.sendMessage("/grozno kit nick - daje kit graczowi");
@@ -51,7 +51,7 @@ public class GroznoArg implements Arg {
                     Player kiter = Bukkit.getPlayer(args[1]);
 
                     if (kiter != null) {
-                        kiter.getInventory().clear();
+                        //kiter.getInventory().clear();
                         ItemStack spade = new ItemStack(Material.DIAMOND_SPADE, 1);
                         /*
                         kiter.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 1, (short) 1));
@@ -64,7 +64,7 @@ public class GroznoArg implements Arg {
                         ItemStack sword = new ItemStack(Material.DIAMOND_SWORD, 1);
 
 
-                        spade.addUnsafeEnchantment(Enchantment.DIG_SPEED,5);
+
                         helmet.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
                         chestplate.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
                         leggings.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
@@ -77,6 +77,7 @@ public class GroznoArg implements Arg {
                         kiter.getInventory().setBoots(boots);
 
                         kiter.getInventory().addItem(sword);*/
+                        spade.addUnsafeEnchantment(Enchantment.DIG_SPEED,5);
                         kiter.getInventory().addItem(spade);
 
                         p.sendMessage("Gosciu " + args[1] + " dostal kit!");

