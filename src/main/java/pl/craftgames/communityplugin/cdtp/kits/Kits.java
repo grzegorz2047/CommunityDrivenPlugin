@@ -17,17 +17,11 @@ public class Kits {
         if (inv.firstEmpty() != -1) {
             inv.addItem(
                     new ItemStack(Material.IRON_SWORD, 1),
-                    new ItemStack(Material.IRON_BOOTS, 1),
-                    new ItemStack(Material.IRON_LEGGINGS, 1),
-                    new ItemStack(Material.IRON_CHESTPLATE, 1),
-                    new ItemStack(Material.IRON_HELMET, 1),
-                    new ItemStack(Material.DIAMOND_PICKAXE, 1),
-                    new ItemStack(Material.DIAMOND_SWORD, 1),
-                    new ItemStack(Material.DIAMOND_AXE, 1),
-                    new ItemStack(Material.DIAMOND_SPADE, 1),
-                    new ItemStack(Material.COOKED_BEEF, 64),
-                    new ItemStack(Material.BOOK, 8),
-                    new ItemStack(Material.COOKED_BEEF, 64)
+                    new ItemStack(Material.IRON_PICKAXE, 1),
+                    new ItemStack(Material.IRON_AXE, 1),
+                    new ItemStack(Material.IRON_SPADE, 1),
+                    new ItemStack(Material.COOKED_BEEF, 32),
+                    new ItemStack(Material.BOAT, 1)
             );
         }
     }
@@ -36,13 +30,13 @@ public class Kits {
         PlayerInventory inv = p.getInventory();
         if (inv.firstEmpty() != -1) {
             inv.addItem(
-                    new ItemStack(Material.IRON_SWORD, 1),
-                    new ItemStack(Material.COOKED_BEEF, 64)
+                    new ItemStack(Material.STONE_SWORD, 1),
+                    new ItemStack(Material.STONE_PICKAXE, 1),
+                    new ItemStack(Material.STONE_AXE, 1),
+                    new ItemStack(Material.STONE_SPADE, 1),
+                    new ItemStack(Material.COOKED_BEEF, 32),
+                    new ItemStack(Material.BOAT, 1)
             );
-            p.getInventory().setBoots(new ItemStack(Material.IRON_BOOTS, 1));
-            p.getInventory().setLeggings(new ItemStack(Material.IRON_LEGGINGS, 1));
-            p.getInventory().setChestplate(new ItemStack(Material.IRON_CHESTPLATE, 1));
-            p.getInventory().setHelmet(new ItemStack(Material.IRON_HELMET));
         }
     }
 

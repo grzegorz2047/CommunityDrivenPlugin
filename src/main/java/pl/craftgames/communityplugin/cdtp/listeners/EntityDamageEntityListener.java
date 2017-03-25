@@ -161,8 +161,8 @@ public class EntityDamageEntityListener implements Listener {
             obj.setCanLogout(false);
             plugin.getSidebarData().refreshScoreboard(attacked);
 
-            attacked.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Jestes podczas WALKI!");
-            attacked.sendMessage((ColoringUtil.colorText("§c§lMusisz poczekać conajmniej {TIME} sekund aby moc sie wylogowac")).replace("{TIME}", String.valueOf(vf.getCooldown())));
+            attacked.sendMessage("§c§lAntyLogout §6» §7Jestes podczas walki!" );
+            attacked.sendMessage((ColoringUtil.colorText("§c§lAntyLogout §6» §7Musisz odczekac {TIME} sekund zeby bezpiecznie sie wylogowac!")).replace("{TIME}", String.valueOf(vf.getCooldown())));
         } else {
             vf.setAttacker(attacker.getName());
             vf.setVictim(attacked.getName());
@@ -176,8 +176,8 @@ public class EntityDamageEntityListener implements Listener {
             obj.setCanLogout(false);
             plugin.getSidebarData().refreshScoreboard(attacker);
 
-            attacker.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Jestes podczas WALKI!");
-            attacker.sendMessage((ColoringUtil.colorText("§c§lMusisz poczekać conajmniej {TIME} sekund aby moc sie wylogowac")).replace("{TIME}", String.valueOf(af.getCooldown())));
+            attacker.sendMessage("§c§lAntyLogout §6» §7Jestes podczas walki!");
+            attacker.sendMessage((ColoringUtil.colorText("§c§lAntyLogout §6» §7Musisz odczekac {TIME} sekund zeby bezpiecznie sie wylogowac!")).replace("{TIME}", String.valueOf(af.getCooldown())));
         } else {
             af.setAttacker(attacker.getName());
             af.setVictim(attacked.getName());

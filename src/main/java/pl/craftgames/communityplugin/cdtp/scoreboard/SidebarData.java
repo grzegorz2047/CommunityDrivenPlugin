@@ -12,10 +12,10 @@ import pl.craftgames.communityplugin.cdtp.user.User;
 public class SidebarData {
 
     private final CDTP plugin;
-    private String killLabel = "§7Zabojstwa:§c§l";
-    private String deathLabel = "§7Smierci:§c§l";
-    private String moneyLabel = "§7Monety:§c§l";
-    private String logoutLabel = "§4§lLogout:";
+    private String killLabel = "§7Zabojstwa:§6§l";
+    private String deathLabel = "§7Smierci:§6§l";
+    private String moneyLabel = "§7Monety:§6§l";
+    private String logoutLabel = "§7§lLogout§7§l:";
 
     public SidebarData(CDTP plugin) {
         this.plugin = plugin;
@@ -25,21 +25,22 @@ public class SidebarData {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective objective = scoreboard.registerNewObjective("sidebar", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        objective.setDisplayName("§6§lPseudoHC");
+        objective.setDisplayName("§6» §6§lSandbox §6«");
 
         Objective healthObj = scoreboard.registerNewObjective("showhealth", "health");
         healthObj.setDisplaySlot(DisplaySlot.BELOW_NAME);
-        healthObj.setDisplayName(" §c§l❤");
+        healthObj.setDisplayName(" §c❤");
         p.setHealth(p.getHealth());
 
 
         User user = plugin.getUserManager().getUsersstats().get(p.getName());
 
 
-        addEntry(scoreboard, objective, logoutLabel, "tak", 6);
-        addEntry(scoreboard, objective, killLabel, user.getKills(), 5);
-        addEntry(scoreboard, objective, deathLabel, user.getDeaths(), 4);
-        addEntry(scoreboard, objective, moneyLabel, user.getMoney(), 3);
+        addEntry(scoreboard, objective, logoutLabel, "§a§l✔", 6);
+        addEntry(scoreboard, objective, "", "", 5);
+        addEntry(scoreboard, objective, killLabel, user.getKills(), 4);
+        addEntry(scoreboard, objective, deathLabel, user.getDeaths(), 3);
+        addEntry(scoreboard, objective, moneyLabel, user.getMoney(), 2);
 
 
 
@@ -49,7 +50,7 @@ public class SidebarData {
     public void refreshScoreboard(Player p) {
         User user = plugin.getUserManager().getUsersstats().get(p.getName());
         Scoreboard scoreboard = p.getScoreboard();
-        String canLogout = user.canLogout() ? "tak" : "nie";
+        String canLogout = user.canLogout() ? "§a§l✔" : "§c✖";
         updateEntry(scoreboard, logoutLabel, canLogout);
         updateEntry(scoreboard, deathLabel, user.getDeaths());
         updateEntry(scoreboard, killLabel, user.getKills());

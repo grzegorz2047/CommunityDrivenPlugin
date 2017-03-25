@@ -40,7 +40,7 @@ public class AntiLogoutManager {
                 User obj = plugin.getUserManager().getUsersstats().get(p.getName());
                 obj.setCanLogout(true);
                 plugin.getSidebarData().refreshScoreboard(p);
-                p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Mozesz juz bezpiecznie sie wylogowac!");
+                p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "AntyLogout" + ChatColor.GOLD + " »" + ChatColor.GRAY + " Mozesz sie juz wylogowac!");
             }
         }
     }
