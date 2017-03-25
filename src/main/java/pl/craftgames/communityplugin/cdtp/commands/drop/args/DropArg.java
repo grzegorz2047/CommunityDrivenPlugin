@@ -22,14 +22,17 @@ public class DropArg implements Arg {
     public void execute(CommandSender sender, String[] args) {
         Player p = (Player) sender;
         p.sendMessage(ChatColor.GRAY + "Drop:");
-        p.sendMessage(ChatColor.GRAY + "Diament " + ChatColor.DARK_AQUA + "1%");
-        p.sendMessage(ChatColor.GRAY + "Złoto " + ChatColor.DARK_AQUA + "0.7%");
-        p.sendMessage(ChatColor.GRAY + "Zelazo " + ChatColor.DARK_AQUA + "2 %");
-        p.sendMessage(ChatColor.GRAY + "Wegiel " + ChatColor.DARK_AQUA + "3%");
-        p.sendMessage(ChatColor.GRAY + "Szmaragdy " + ChatColor.DARK_AQUA + "1.5%");
-        p.sendMessage(ChatColor.GRAY + "Proch: " + ChatColor.DARK_AQUA + "1%");
-        p.sendMessage(ChatColor.GRAY + "Perły: " + ChatColor.DARK_AQUA + "0.01%");
-        p.sendMessage(ChatColor.GRAY + "Redstone: " + ChatColor.DARK_AQUA + "1%");
+        p.sendMessage(ChatColor.GRAY + "Diament " + ChatColor.DARK_AQUA + "3%");
+        p.sendMessage(ChatColor.GRAY + "Zloto " + ChatColor.DARK_AQUA + "4%");
+        p.sendMessage(ChatColor.GRAY + "Zelazo " + ChatColor.DARK_AQUA + "6%");
+        p.sendMessage(ChatColor.GRAY + "Wegiel " + ChatColor.DARK_AQUA + "14%");
+        p.sendMessage(ChatColor.GRAY + "Szmaragdy " + ChatColor.DARK_AQUA + "5%");
+        p.sendMessage(ChatColor.GRAY + "Lapis: " + ChatColor.DARK_AQUA + "3%");
+        p.sendMessage(ChatColor.GRAY + "Jablko: " + ChatColor.DARK_AQUA + "1%");
+        p.sendMessage(ChatColor.GRAY + "Obsydian: " + ChatColor.DARK_AQUA + "0.4%");
+        p.sendMessage(ChatColor.GRAY + "EXP: " + ChatColor.DARK_AQUA + "4%");
+        p.sendMessage(ChatColor.GRAY + "Perly: " + ChatColor.DARK_AQUA + "1%");
+        p.sendMessage(ChatColor.GRAY + "Redstone: " + ChatColor.DARK_AQUA + "5%");
         p.sendMessage(ChatColor.GRAY + "Ksiazka: " + ChatColor.DARK_AQUA + "0.45%");
     }
 
