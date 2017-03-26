@@ -27,7 +27,7 @@ public class HomeArg implements Arg {
         }
         Location home = plugin.getSQLManager().getHome(p);
         if(home == null){
-            p.sendMessage(ColoringUtil.colorText("&7Za &c&lNie posiadasz domu!"));
+            p.sendMessage(ColoringUtil.colorText("&c&lNie posiadasz ustawionego domu!"));
             return;
         }
         TeleportRequest request = new TeleportRequest

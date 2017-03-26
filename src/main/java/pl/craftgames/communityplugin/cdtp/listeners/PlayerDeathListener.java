@@ -36,7 +36,7 @@ public class PlayerDeathListener implements Listener {
         }
         user.setDeaths(user.getDeaths() + 1);
         user.setCanLogout(true);
-        e.getEntity().sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Mozesz juz bezpiecznie sie wylogowac!");
+        e.getEntity().sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "AntyLogout" + ChatColor.GOLD + " »" + ChatColor.GRAY + " Mozesz sie juz wylogowac!");
 
         Player killerPlayer = e.getEntity().getKiller();
         if (killerPlayer != null) {
@@ -50,7 +50,7 @@ public class PlayerDeathListener implements Listener {
             killerPlayer.sendMessage("§6§l+" + plugin.getSettingsManager().getMoneyForKill() + " monet!");
             killer.setKills(killer.getKills() + 1);
 
-            Bukkit.broadcastMessage("§c§l" + killer.getUsername() + "§r§7 zabil " + "§c§l" + user.getUsername());
+            Bukkit.broadcastMessage("§c§l" + user.getUsername() + "§r§7 zostal zabity przez " + "§c§l" + killer.getUsername());
             Fight f = plugin.getAntiLogoutManager().getFightList().get(e.getEntity().getName());
             String attacker = f.getAttacker();
             String victim = f.getVictim();

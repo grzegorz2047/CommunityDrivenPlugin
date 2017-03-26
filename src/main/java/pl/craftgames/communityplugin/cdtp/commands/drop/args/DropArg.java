@@ -22,7 +22,7 @@ public class DropArg implements Arg {
     public void execute(CommandSender sender, String[] args) {
         Player p = (Player) sender;
         p.sendMessage(ChatColor.GRAY + "Drop:");
-        p.sendMessage(ChatColor.GRAY + "Diament " + ChatColor.DARK_AQUA + "3%");
+        p.sendMessage(ChatColor.GRAY + "Diament " + ChatColor.DARK_AQUA + "1.5%");
         p.sendMessage(ChatColor.GRAY + "Zloto " + ChatColor.DARK_AQUA + "4%");
         p.sendMessage(ChatColor.GRAY + "Zelazo " + ChatColor.DARK_AQUA + "6%");
         p.sendMessage(ChatColor.GRAY + "Wegiel " + ChatColor.DARK_AQUA + "14%");

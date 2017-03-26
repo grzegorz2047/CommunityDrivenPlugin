@@ -23,9 +23,9 @@ public class DelHomeArg implements Arg {
         Location home = plugin.getSQLManager().getHome(p);
         if (home != null) {
             plugin.getSQLManager().removeHome(p);
-            p.sendMessage(ColoringUtil.colorText("&7Usunales dom!"));
+            p.sendMessage(ColoringUtil.colorText("&7Dom zostal pomyslnie usuniety!"));
         } else {
-            p.sendMessage(ColoringUtil.colorText("&cnie posiadasz domu!"));
+            p.sendMessage(ColoringUtil.colorText("&cNie posiadasz ustawionego domu!"));
         }
 
 

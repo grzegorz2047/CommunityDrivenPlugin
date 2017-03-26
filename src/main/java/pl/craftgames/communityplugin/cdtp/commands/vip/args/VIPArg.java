@@ -23,6 +23,7 @@ public class VIPArg implements Arg {
         Player p = (Player) sender;
         p.sendMessage(ChatColor.GRAY + "Obecne przywileje rangi " + ChatColor.GOLD + "" + ChatColor.BOLD + "VIP:");
         p.sendMessage(ChatColor.GRAY + "- Lepsze przedmioty startowe przy odrodzeniu");
+        p.sendMessage(ChatColor.GRAY + "- Dostep do komendy" + ChatColor.GOLD + " /repair");
 
     }
 }
