@@ -23,7 +23,7 @@ public class GroznoArg implements Arg {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (sender.getName().equals("Koem") || sender.getName().equals("xVeenix") || sender.getName().equalsIgnoreCase("xBYCZEKx") || sender.getName().equals("grzegorz2047")) {
+        if (sender.getName().equals("Koem") || sender.getName().equals("xVeenix") || sender.getName().equals("grzegorz2047")) {
             Player p = (Player) sender;
             if(args.length == 0){
                 p.sendMessage("/grozno kit nick - daje kit graczowi");
