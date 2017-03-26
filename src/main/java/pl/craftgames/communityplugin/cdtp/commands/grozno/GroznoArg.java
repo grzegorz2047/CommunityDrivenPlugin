@@ -35,7 +35,7 @@ public class GroznoArg implements Arg {
             if (args.length == 1) {
                 if (args[0].equals("clear")) {
                     plugin.getTeams().clear();
-                    p.sendMessage("Usunieto druzyny");
+                    p.sendMessage("Usunieto druzyny!");
                 }
             } else if (args.length == 2) {
                 if (args[0].equals("whitelist")) {
